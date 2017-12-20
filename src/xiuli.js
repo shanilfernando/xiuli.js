@@ -1,5 +1,9 @@
 export default class Xiuli {
   constructor() {
-    console.log('Xiuli');
+    this.console = console;
+  }
+
+  test() {
+    this.console.log('Test');
   }
 }

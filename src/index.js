@@ -1,3 +1,7 @@
 import Xiuli from './xiuli';
 
-export default { Xiuli };
+(function initMiuli() {
+  const xiuli = new Xiuli();
+
+  module.exports = xiuli;
+}());

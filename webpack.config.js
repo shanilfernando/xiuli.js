@@ -9,13 +9,14 @@ const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 
 const plugins = [];
-let outputFile;
+
+let outputFile = `${library.name}`;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({
     minimize: true,
   }));
-  outputFile = `${library.name  }.min.js`;
+  outputFile = `${library.name}.min`;
 } else {
   plugins.push(new BrowserSyncPlugin({
     host: '0.0.0.0',
@@ -24,15 +25,19 @@ if (env === 'build') {
       baseDir: ['docs'],
     },
   }));
-  outputFile = `${library.name}.js`;
 }
 
+const entry = {
+  [`lib/${outputFile}`]: `${__dirname}/src/index.js`,
+  [`docs/assets/js/${outputFile}`]: `${__dirname}/src/index.js`,
+};
+
 const config = {
-  entry: `${__dirname}/src/index.js`,
+  entry,
   devtool: 'source-map',
   output: {
-    path: `${__dirname}/lib`,
-    filename: outputFile,
+    path: `${__dirname}/`,
+    filename: '[name].js',
     library: library.name,
     libraryTarget: 'umd',
     umdNamedDefine: true,

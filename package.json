@@ -8,9 +8,8 @@
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack --progress --colors --watch --env dev",
-    "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
-    "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js",
-    "karma": "karma start && karma run" 
+    "test": "karma start",
+    "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -25,7 +24,12 @@
     "eslint-plugin-import": "^2.8.0",
     "jasmine-core": "^2.8.0",
     "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.1",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-safari-launcher": "^1.0.0",
     "webpack": "^3.10.0",
     "yargs": "^10.0.3"
   }
