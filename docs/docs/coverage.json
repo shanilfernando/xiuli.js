@@ -1,0 +1,30 @@
+{
+  "coverage": "40%",
+  "expectCount": 10,
+  "actualCount": 4,
+  "files": {
+    "src/matrix/mat4.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "src/matrix/util.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2
+      ]
+    },
+    "src/xiuli.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        3,
+        6
+      ]
+    }
+  }
+}

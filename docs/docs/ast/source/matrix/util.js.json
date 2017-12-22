@@ -1,0 +1,1734 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 195,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 4,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 195,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 4,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "Identifier",
+        "start": 0,
+        "end": 78,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 78
+          }
+        },
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "start": 6,
+            "end": 77,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 6
+              },
+              "end": {
+                "line": 1,
+                "column": 77
+              }
+            },
+            "id": {
+              "type": "Identifier",
+              "start": 6,
+              "end": 16,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 6
+                },
+                "end": {
+                  "line": 1,
+                  "column": 16
+                },
+                "identifierName": "ARRAY_TYPE"
+              },
+              "name": "ARRAY_TYPE"
+            },
+            "init": {
+              "type": "ConditionalExpression",
+              "start": 19,
+              "end": 77,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 19
+                },
+                "end": {
+                  "line": 1,
+                  "column": 77
+                }
+              },
+              "test": {
+                "type": "BinaryExpression",
+                "start": 19,
+                "end": 54,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 54
+                  }
+                },
+                "left": {
+                  "type": "UnaryExpression",
+                  "start": 19,
+                  "end": 38,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 19
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 38
+                    }
+                  },
+                  "operator": "typeof",
+                  "prefix": true,
+                  "argument": {
+                    "type": "Identifier",
+                    "start": 26,
+                    "end": 38,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 26
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 38
+                      },
+                      "identifierName": "Float32Array"
+                    },
+                    "name": "Float32Array"
+                  },
+                  "extra": {
+                    "parenthesizedArgument": false
+                  }
+                },
+                "operator": "!==",
+                "right": {
+                  "type": "StringLiteral",
+                  "start": 43,
+                  "end": 54,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 43
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 54
+                    }
+                  },
+                  "extra": {
+                    "rawValue": "undefined",
+                    "raw": "'undefined'"
+                  },
+                  "value": "undefined"
+                }
+              },
+              "consequent": {
+                "type": "Identifier",
+                "start": 57,
+                "end": 69,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 57
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 69
+                  },
+                  "identifierName": "Float32Array"
+                },
+                "name": "Float32Array"
+              },
+              "alternate": {
+                "type": "Identifier",
+                "start": 72,
+                "end": 77,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 72
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 77
+                  },
+                  "identifierName": "Array"
+                },
+                "name": "Array"
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "name": "_",
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      {
+        "type": "Identifier",
+        "start": 79,
+        "end": 158,
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 79
+          }
+        },
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "start": 85,
+            "end": 157,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 6
+              },
+              "end": {
+                "line": 2,
+                "column": 78
+              }
+            },
+            "id": {
+              "type": "Identifier",
+              "start": 85,
+              "end": 96,
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 6
+                },
+                "end": {
+                  "line": 2,
+                  "column": 17
+                },
+                "identifierName": "ARRAY_TYPE2"
+              },
+              "name": "ARRAY_TYPE2"
+            },
+            "init": {
+              "type": "ConditionalExpression",
+              "start": 99,
+              "end": 157,
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 20
+                },
+                "end": {
+                  "line": 2,
+                  "column": 78
+                }
+              },
+              "test": {
+                "type": "BinaryExpression",
+                "start": 99,
+                "end": 134,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 55
+                  }
+                },
+                "left": {
+                  "type": "UnaryExpression",
+                  "start": 99,
+                  "end": 118,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 39
+                    }
+                  },
+                  "operator": "typeof",
+                  "prefix": true,
+                  "argument": {
+                    "type": "Identifier",
+                    "start": 106,
+                    "end": 118,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 27
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 39
+                      },
+                      "identifierName": "Float32Array"
+                    },
+                    "name": "Float32Array"
+                  },
+                  "extra": {
+                    "parenthesizedArgument": false
+                  }
+                },
+                "operator": "!==",
+                "right": {
+                  "type": "StringLiteral",
+                  "start": 123,
+                  "end": 134,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 44
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 55
+                    }
+                  },
+                  "extra": {
+                    "rawValue": "undefined",
+                    "raw": "'undefined'"
+                  },
+                  "value": "undefined"
+                }
+              },
+              "consequent": {
+                "type": "Identifier",
+                "start": 137,
+                "end": 149,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 58
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 70
+                  },
+                  "identifierName": "Float32Array"
+                },
+                "name": "Float32Array"
+              },
+              "alternate": {
+                "type": "Identifier",
+                "start": 152,
+                "end": 157,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 73
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 78
+                  },
+                  "identifierName": "Array"
+                },
+                "name": "Array"
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "name": "_",
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 159,
+        "end": 194,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 3,
+            "column": 35
+          }
+        },
+        "declaration": null,
+        "specifiers": [
+          {
+            "type": "ExportSpecifier",
+            "start": 168,
+            "end": 178,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 9
+              },
+              "end": {
+                "line": 3,
+                "column": 19
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 168,
+              "end": 178,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 9
+                },
+                "end": {
+                  "line": 3,
+                  "column": 19
+                },
+                "identifierName": "ARRAY_TYPE"
+              },
+              "name": "ARRAY_TYPE"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 168,
+              "end": 178,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 9
+                },
+                "end": {
+                  "line": 3,
+                  "column": 19
+                },
+                "identifierName": "ARRAY_TYPE"
+              },
+              "name": "ARRAY_TYPE"
+            }
+          },
+          {
+            "type": "ExportSpecifier",
+            "start": 180,
+            "end": 191,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 21
+              },
+              "end": {
+                "line": 3,
+                "column": 32
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 180,
+              "end": 191,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 21
+                },
+                "end": {
+                  "line": 3,
+                  "column": 32
+                },
+                "identifierName": "ARRAY_TYPE2"
+              },
+              "name": "ARRAY_TYPE2"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 180,
+              "end": 191,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 21
+                },
+                "end": {
+                  "line": 3,
+                  "column": 32
+                },
+                "identifierName": "ARRAY_TYPE2"
+              },
+              "name": "ARRAY_TYPE2"
+            }
+          }
+        ],
+        "source": null
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 159,
+        "end": 194,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 3,
+            "column": 35
+          }
+        },
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 0,
+          "end": 78,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 78
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 6,
+              "end": 77,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 6
+                },
+                "end": {
+                  "line": 1,
+                  "column": 77
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 6,
+                "end": 16,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 16
+                  },
+                  "identifierName": "ARRAY_TYPE"
+                },
+                "name": "ARRAY_TYPE"
+              },
+              "init": {
+                "type": "ConditionalExpression",
+                "start": 19,
+                "end": 77,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 77
+                  }
+                },
+                "test": {
+                  "type": "BinaryExpression",
+                  "start": 19,
+                  "end": 54,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 19
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 54
+                    }
+                  },
+                  "left": {
+                    "type": "UnaryExpression",
+                    "start": 19,
+                    "end": 38,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 19
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 38
+                      }
+                    },
+                    "operator": "typeof",
+                    "prefix": true,
+                    "argument": {
+                      "type": "Identifier",
+                      "start": 26,
+                      "end": 38,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 38
+                        },
+                        "identifierName": "Float32Array"
+                      },
+                      "name": "Float32Array"
+                    },
+                    "extra": {
+                      "parenthesizedArgument": false
+                    }
+                  },
+                  "operator": "!==",
+                  "right": {
+                    "type": "StringLiteral",
+                    "start": 43,
+                    "end": 54,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 43
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 54
+                      }
+                    },
+                    "extra": {
+                      "rawValue": "undefined",
+                      "raw": "'undefined'"
+                    },
+                    "value": "undefined"
+                  }
+                },
+                "consequent": {
+                  "type": "Identifier",
+                  "start": 57,
+                  "end": 69,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 57
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 69
+                    },
+                    "identifierName": "Float32Array"
+                  },
+                  "name": "Float32Array"
+                },
+                "alternate": {
+                  "type": "Identifier",
+                  "start": 72,
+                  "end": 77,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 72
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 77
+                    },
+                    "identifierName": "Array"
+                  },
+                  "name": "Array"
+                }
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        },
+        "specifiers": null,
+        "source": null,
+        "leadingComments": null
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 159,
+        "end": 194,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 3,
+            "column": 35
+          }
+        },
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 79,
+          "end": 158,
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 0
+            },
+            "end": {
+              "line": 2,
+              "column": 79
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 85,
+              "end": 157,
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 6
+                },
+                "end": {
+                  "line": 2,
+                  "column": 78
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 85,
+                "end": 96,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 17
+                  },
+                  "identifierName": "ARRAY_TYPE2"
+                },
+                "name": "ARRAY_TYPE2"
+              },
+              "init": {
+                "type": "ConditionalExpression",
+                "start": 99,
+                "end": 157,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 78
+                  }
+                },
+                "test": {
+                  "type": "BinaryExpression",
+                  "start": 99,
+                  "end": 134,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 55
+                    }
+                  },
+                  "left": {
+                    "type": "UnaryExpression",
+                    "start": 99,
+                    "end": 118,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 39
+                      }
+                    },
+                    "operator": "typeof",
+                    "prefix": true,
+                    "argument": {
+                      "type": "Identifier",
+                      "start": 106,
+                      "end": 118,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 27
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 39
+                        },
+                        "identifierName": "Float32Array"
+                      },
+                      "name": "Float32Array"
+                    },
+                    "extra": {
+                      "parenthesizedArgument": false
+                    }
+                  },
+                  "operator": "!==",
+                  "right": {
+                    "type": "StringLiteral",
+                    "start": 123,
+                    "end": 134,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 44
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 55
+                      }
+                    },
+                    "extra": {
+                      "rawValue": "undefined",
+                      "raw": "'undefined'"
+                    },
+                    "value": "undefined"
+                  }
+                },
+                "consequent": {
+                  "type": "Identifier",
+                  "start": 137,
+                  "end": 149,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 58
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 70
+                    },
+                    "identifierName": "Float32Array"
+                  },
+                  "name": "Float32Array"
+                },
+                "alternate": {
+                  "type": "Identifier",
+                  "start": 152,
+                  "end": 157,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 73
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 78
+                    },
+                    "identifierName": "Array"
+                  },
+                  "name": "Array"
+                }
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        },
+        "specifiers": null,
+        "source": null,
+        "leadingComments": null
+      }
+    ],
+    "directives": []
+  },
+  "comments": [],
+  "tokens": [
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 0,
+      "end": 5,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "ARRAY_TYPE",
+      "start": 6,
+      "end": 16,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 6
+        },
+        "end": {
+          "line": 1,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 17,
+      "end": 18,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 17
+        },
+        "end": {
+          "line": 1,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "typeof",
+        "keyword": "typeof",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": true,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "typeof",
+      "start": 19,
+      "end": 25,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 19
+        },
+        "end": {
+          "line": 1,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Float32Array",
+      "start": 26,
+      "end": 38,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 26
+        },
+        "end": {
+          "line": 1,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "==/!=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": 6,
+        "updateContext": null
+      },
+      "value": "!==",
+      "start": 39,
+      "end": 42,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 39
+        },
+        "end": {
+          "line": 1,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "undefined",
+      "start": 43,
+      "end": 54,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 43
+        },
+        "end": {
+          "line": 1,
+          "column": 54
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "?",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 55,
+      "end": 56,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 55
+        },
+        "end": {
+          "line": 1,
+          "column": 56
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Float32Array",
+      "start": 57,
+      "end": 69,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 57
+        },
+        "end": {
+          "line": 1,
+          "column": 69
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 70,
+      "end": 71,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 70
+        },
+        "end": {
+          "line": 1,
+          "column": 71
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Array",
+      "start": 72,
+      "end": 77,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 72
+        },
+        "end": {
+          "line": 1,
+          "column": 77
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 77,
+      "end": 78,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 77
+        },
+        "end": {
+          "line": 1,
+          "column": 78
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 79,
+      "end": 84,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "ARRAY_TYPE2",
+      "start": 85,
+      "end": 96,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 6
+        },
+        "end": {
+          "line": 2,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 97,
+      "end": 98,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 18
+        },
+        "end": {
+          "line": 2,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "typeof",
+        "keyword": "typeof",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": true,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "typeof",
+      "start": 99,
+      "end": 105,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 20
+        },
+        "end": {
+          "line": 2,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Float32Array",
+      "start": 106,
+      "end": 118,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 27
+        },
+        "end": {
+          "line": 2,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "==/!=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": 6,
+        "updateContext": null
+      },
+      "value": "!==",
+      "start": 119,
+      "end": 122,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 40
+        },
+        "end": {
+          "line": 2,
+          "column": 43
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "undefined",
+      "start": 123,
+      "end": 134,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 44
+        },
+        "end": {
+          "line": 2,
+          "column": 55
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "?",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 135,
+      "end": 136,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 56
+        },
+        "end": {
+          "line": 2,
+          "column": 57
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Float32Array",
+      "start": 137,
+      "end": 149,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 58
+        },
+        "end": {
+          "line": 2,
+          "column": 70
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 150,
+      "end": 151,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 71
+        },
+        "end": {
+          "line": 2,
+          "column": 72
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Array",
+      "start": 152,
+      "end": 157,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 73
+        },
+        "end": {
+          "line": 2,
+          "column": 78
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 157,
+      "end": 158,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 78
+        },
+        "end": {
+          "line": 2,
+          "column": 79
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 159,
+      "end": 165,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 166,
+      "end": 167,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 7
+        },
+        "end": {
+          "line": 3,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "ARRAY_TYPE",
+      "start": 168,
+      "end": 178,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 9
+        },
+        "end": {
+          "line": 3,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 178,
+      "end": 179,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 19
+        },
+        "end": {
+          "line": 3,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "ARRAY_TYPE2",
+      "start": 180,
+      "end": 191,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 21
+        },
+        "end": {
+          "line": 3,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 192,
+      "end": 193,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 33
+        },
+        "end": {
+          "line": 3,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 193,
+      "end": 194,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 34
+        },
+        "end": {
+          "line": 3,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 195,
+      "end": 195,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 0
+        }
+      }
+    }
+  ]
+}
