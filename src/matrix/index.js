@@ -1,4 +1,5 @@
+import { ARRAY_TYPE, getCSSStyles } from './util';
+import Vec3 from './vec3';
 import Mat4 from './mat4';
-import { ARRAY_TYPE } from './util';
 
-export { Mat4, ARRAY_TYPE };
+export { ARRAY_TYPE, getCSSStyles, Vec3, Mat4 };

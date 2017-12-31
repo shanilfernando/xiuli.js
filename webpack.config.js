@@ -24,6 +24,7 @@ if (env === 'build') {
     server: {
       baseDir: ['docs'],
     },
+    files: ['docs/index.html'],
   }));
 }
 
