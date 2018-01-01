@@ -49,9 +49,9 @@ export default class Xiuli {
   }
 
   onMenuClick({
-    target,
+    button,
   }) {
-    const targetId = target.getAttribute('xiuli-target');
+    const targetId = button.getAttribute('xiuli-target');
     this.main.style.transform = this.elements[targetId];
   }
 

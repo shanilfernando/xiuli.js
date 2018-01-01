@@ -124,24 +124,10 @@ var _xiuli2 = _interopRequireDefault(_xiuli);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* (function initMiuli() {
-  function init() {
-    if (document.getElementById('xiuli')) {
-      const xiuli = new Xiuli();
-      module.exports = xiuli;
-    }
-  }
-  if (
-    document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading') {
-    init();
-  } else {
-    document.addEventListener('DOMContentLoaded', init);
-  }
-}()); */
-
-var xiuli = new _xiuli2.default(); /* global */
-
-module.exports = xiuli;
+(function initMiuli() {
+  var xiuli = new _xiuli2.default();
+  module.exports = xiuli;
+})(); /* global */
 
 /***/ }),
 /* 2 */
@@ -228,9 +214,9 @@ var Xiuli = function () {
   }, {
     key: 'onMenuClick',
     value: function onMenuClick(_ref) {
-      var target = _ref.target;
+      var button = _ref.button;
 
-      var targetId = target.getAttribute('xiuli-target');
+      var targetId = button.getAttribute('xiuli-target');
       this.main.style.transform = this.elements[targetId];
     }
   }, {

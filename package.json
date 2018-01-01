@@ -8,9 +8,8 @@
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack --progress --colors --watch --env dev",
-    "test": "karma start",
-    "test:watch":
-      "mocha --require babel-core/register --colors -w ./test/*.spec.js",
+    "selenium": "webdriver-manager start",
+    "test": "protractor conf.js",
     "doc": "esdoc"
   },
   "devDependencies": {
@@ -27,6 +26,7 @@
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.8.0",
     "jasmine-core": "^2.8.0",
+    "jasmine-spec-reporter": "^4.2.1",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-firefox-launcher": "^1.1.0",
@@ -34,6 +34,7 @@
     "karma-jasmine": "^1.1.1",
     "karma-opera-launcher": "^1.0.0",
     "karma-safari-launcher": "^1.0.0",
+    "protractor": "^5.2.2",
     "webpack": "^3.10.0",
     "yargs": "^10.0.3"
   }
