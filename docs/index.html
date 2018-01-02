@@ -24,7 +24,7 @@
         }
 
         #xiuli {
-            position: absolute;
+            
             -webkit-transition: all 2s;
             transition: all 2s;
             -webkit-transform-style: preserve-3d;
@@ -89,7 +89,7 @@
 
 <body>
     <div id="menu">
-        <button type="button" xiuli-target="section1">section1</button>
+        <button type="button" id="button1" xiuli-target="section1">section1</button>
         <button type="button" xiuli-target="section2">section2</button>
         <button type="button" xiuli-target="section3">section3</button>
         <button type="button" xiuli-target="section4">section4</button>
@@ -115,6 +115,8 @@
     <script type="text/javascript" src="assets/js/xiuli.js"></script>
     <!-- <script type="text/javascript" src="assets/js/xiuli.min.js"></script> -->
     <script>
+        var body = document.body;
+        console.log(body.clientHeight);
     </script>
 </body>
 

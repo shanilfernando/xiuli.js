@@ -150,6 +150,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Xiuli = function () {
   function Xiuli() {
+    var _this = this;
+
     var mainContainer = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'xiuli';
 
     _classCallCheck(this, Xiuli);
@@ -157,13 +159,21 @@ var Xiuli = function () {
     var buttons = document.querySelectorAll('[xiuli-target]');
     this.main = document.getElementById(mainContainer);
     this.root = this.main.parentElement;
-    /* this.main.addEventListener(
-      'transitionend',
-      (event) => {
-        console.log(event);
-      },
-      false,
-    ); */
+
+    var _root$getBoundingClie = this.root.getBoundingClientRect(),
+        x = _root$getBoundingClie.x,
+        y = _root$getBoundingClie.y;
+
+    this.root.x = x;
+    this.root.y = y;
+    this.callback = null;
+    this.clicked = null;
+    this.main.addEventListener('transitionend', function () {
+      if (_this.callback && _this.clicked) {
+        _this.callback(_this.clicked);
+        _this.clicked = null;
+      }
+    }, false);
     this.mainTrans = _matrix.Mat4.fromElement(this.main);
 
     this.elements = {};
@@ -196,8 +206,8 @@ var Xiuli = function () {
       var TrMat = _matrix.Mat4.fromTranslation(TrVec);
       _matrix.Mat4.multiply(TrMat, secTr, secTr);
       _matrix.Vec3.negate(TrVec, TrVec);
-      TrVec[0] -= (this.root.offsetWidth - target.offsetWidth) / 2;
-      TrVec[1] -= (window.innerHeight - target.offsetHeight) / 2;
+      TrVec[0] -= (window.innerWidth - target.offsetWidth) / 2 - this.root.x;
+      TrVec[1] -= (window.innerHeight - target.offsetHeight) / 2 - this.root.y;
       _matrix.Mat4.fromTranslation(TrVec, TrMat);
 
       _matrix.Mat4.multiply(secTr, TrMat, secTr);
@@ -214,17 +224,16 @@ var Xiuli = function () {
   }, {
     key: 'onMenuClick',
     value: function onMenuClick(_ref) {
-      var button = _ref.button;
+      var target = _ref.target;
 
-      var targetId = button.getAttribute('xiuli-target');
+      var targetId = target.getAttribute('xiuli-target');
       this.main.style.transform = this.elements[targetId];
+      this.clicked = target;
     }
   }, {
-    key: 'on',
-    value: function on(eventName, callback) {
-      this.main.addEventListener(eventName, function (event) {
-        callback(event);
-      }, false);
+    key: 'onTransitionend',
+    value: function onTransitionend(fn) {
+      this.callback = fn;
     }
   }]);
 
