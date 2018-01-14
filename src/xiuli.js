@@ -64,6 +64,18 @@ export default class Xiuli {
     this.clicked = target;
   }
 
+  next(){
+
+  }
+
+  pre(){
+
+  }
+
+  goto(){
+    
+  }
+
   onTransitionend(fn) {
     this.callback = fn;
   }
