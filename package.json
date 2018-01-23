@@ -6,7 +6,7 @@
   "author": "Shanil Fernando",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build && npm run test",
+    "build": "webpack --env dev && webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",
     "selenium": "webdriver-manager start",
     "test": "protractor conf.js",

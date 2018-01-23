@@ -25,11 +25,13 @@ export default class Xiuli {
     this.mainTrans = Mat4.fromElement(this.main);
 
     this.elements = {};
-    Array.prototype.forEach.call(buttons, this.init.bind(this));
+    Array.prototype.forEach.call(buttons, (el) => {
+      this.add(el, false);
+    });
   }
 
-  init(element, index) {
-    const targetId = element.getAttribute('xiuli-target');
+  add(el, move) {
+    const targetId = el.getAttribute('xiuli-target');
     const target = document.getElementById(targetId);
     const { transform, 'transform-origin': transformOrigin } = getCSSStyles(target, 'transform', 'transform-origin');
     const re = /[-+]?[0-9]*\.?[0-9]+/g;
@@ -50,10 +52,11 @@ export default class Xiuli {
     Mat4.multiply(this.mainTrans, secTr, secTr);
 
     this.elements[targetId] = Mat4.toCssTransform(secTr);
-    if (index === 0) {
+    if (move) {
       this.main.style.transform = this.elements[targetId];
+      this.clicked = el;
     }
-    element.addEventListener('click', this.onMenuClick.bind(this));
+    el.addEventListener('click', this.onMenuClick.bind(this));
   }
 
   onMenuClick({
@@ -63,19 +66,6 @@ export default class Xiuli {
     this.main.style.transform = this.elements[targetId];
     this.clicked = target;
   }
-
-  next(){
-
-  }
-
-  pre(){
-
-  }
-
-  goto(){
-    
-  }
-
   onTransitionend(fn) {
     this.callback = fn;
   }
