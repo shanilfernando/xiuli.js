@@ -1,7 +1,7 @@
-/* global describe beforeAll browser it expect element by xiuli document */
+/* global describe beforeAll browser it expect element by xiuli */
 
 describe('Protractor Demo App', () => {
-  let wideElements = ['button1', 'button2', 'button3', 'button4', 'button5'];
+  const wideElements = ['button1', 'button2', 'button3', 'button4', 'button5', 'pre', 'pre', 'next', 'next'];
   beforeAll(async () => {
     await browser.waitForAngularEnabled(false);
     await browser.get('http://localhost:3000');
@@ -19,16 +19,16 @@ describe('Protractor Demo App', () => {
         const callback = arguments[arguments.length - 1];
         xiuli.onTransitionend(callback);
       });
-      const { width, height } = await browser.executeScript('return {width:window.innerWidth, height:window.innerHeight}');
-      const targetId = await el.getAttribute('xiuli-target');
-      const target = await element(by.id(targetId));
+      const { width, height } = await browser.executeScript('return {width:document.documentElement.clientWidth || document.body.clientWidth, height:document.documentElement.clientHeight || document.body.clientHeight}');
+      const target = await element(by.id(el));
       const loc = await target.getLocation();
-      expect((loc.x * 2) + loc.width).toBeCloseTo(width, 0);
-      expect((loc.y * 2) + loc.height).toBeCloseTo(height, 0);
+      const size = await target.getSize();
+      expect((loc.x * 2) + size.width).toBeCloseTo(width, 0);
+      expect((loc.y * 2) + size.height).toBeCloseTo(height, 0);
     });
   }
 
-  for (const wideElement of wideElements) {
+  wideElements.forEach((wideElement) => {
     testNav(wideElement);
-  }
+  });
 });

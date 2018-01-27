@@ -5,10 +5,13 @@ exports.config = {
   directConnect: true,
   seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: ['test/spec.js'],
-  capabilities: {
+  maxSessions: 1,
+  multiCapabilities: [{
     browserName: 'firefox',
-  },
-  jasmineNodeOpts: { print() {}, defaultTimeoutInterval: 30000 },
+  }, {
+    browserName: 'chrome',
+  }],
+  jasmineNodeOpts: { print() { }, defaultTimeoutInterval: 30000 },
   SELENIUM_PROMISE_MANAGER: false,
   onPrepare() {
     jasmine.getEnv().addReporter(new SpecReporter({

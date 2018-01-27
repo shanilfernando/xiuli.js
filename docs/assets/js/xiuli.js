@@ -127,7 +127,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var xiuli = new _xiuli2.default(); /* global */
 
 module.exports = xiuli;
-console.log(xiuli);
 
 /***/ }),
 /* 2 */
@@ -142,13 +141,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* global document window */
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* global document */
+/* eslint no-underscore-dangle: ["error", { "allow": ["_current", "_bar"] }] */
 
 var _matrix = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var onMenuClick = Symbol('onMenuClick');
 
 var Xiuli = function () {
   function Xiuli() {
@@ -158,28 +156,54 @@ var Xiuli = function () {
 
     _classCallCheck(this, Xiuli);
 
-    var buttons = document.querySelectorAll('[xiuli-target]');
+    this.elementIds = [];
+    var xiulies = document.querySelectorAll('[xiuli-target]');
+    var _current = -1;
+    this.next = function (clicked) {
+      _current += 1;
+      if (_current >= _this.elementIds.length) {
+        _current = 0;
+      }
+      var tId = _this.elementIds[_current];
+      _this.target = tId;
+      _this.clicked = clicked;
+      _this.main.style.transform = _this.elements[tId];
+    };
+    this.pre = function (clicked) {
+      _current -= 1;
+      if (_current < 0) {
+        _current = _this.elementIds.length - 1;
+      }
+      console.log(_current);
+      var tId = _this.elementIds[_current];
+      _this.target = tId;
+      _this.clicked = clicked;
+      _this.main.style.transform = _this.elements[tId];
+    };
     this.main = document.getElementById(mainContainer);
     this.root = this.main.parentElement;
 
     var _root$getBoundingClie = this.root.getBoundingClientRect(),
-        x = _root$getBoundingClie.x,
-        y = _root$getBoundingClie.y;
+        left = _root$getBoundingClie.left,
+        top = _root$getBoundingClie.top;
 
-    this.root.x = x;
-    this.root.y = y;
+    this.root.x = left;
+    this.root.y = top;
     this.callback = null;
     this.clicked = null;
+    this.target = null;
     this.main.addEventListener('transitionend', function () {
-      if (_this.callback && _this.clicked) {
-        _this.callback(_this.clicked);
+      if (_this.callback) {
+        _this.callback(_this.target, _this.clicked);
         _this.clicked = null;
+        _this.target = null;
       }
     }, false);
     this.mainTrans = _matrix.Mat4.fromElement(this.main);
 
     this.elements = {};
-    Array.prototype.forEach.call(buttons, function (el) {
+
+    Array.prototype.forEach.call(xiulies, function (el) {
       _this.add(el, false);
     });
   }
@@ -187,10 +211,7 @@ var Xiuli = function () {
   _createClass(Xiuli, [{
     key: 'add',
     value: function add(el, move) {
-      var targetId = el.getAttribute('xiuli-target');
-      var target = document.getElementById(targetId);
-
-      var _getCSSStyles = (0, _matrix.getCSSStyles)(target, 'transform', 'transform-origin'),
+      var _getCSSStyles = (0, _matrix.getCSSStyles)(el, 'transform', 'transform-origin'),
           transform = _getCSSStyles.transform,
           transformOrigin = _getCSSStyles['transform-origin'];
 
@@ -210,8 +231,10 @@ var Xiuli = function () {
       var TrMat = _matrix.Mat4.fromTranslation(TrVec);
       _matrix.Mat4.multiply(TrMat, secTr, secTr);
       _matrix.Vec3.negate(TrVec, TrVec);
-      TrVec[0] -= (window.innerWidth - target.offsetWidth) / 2 - this.root.x;
-      TrVec[1] -= (window.innerHeight - target.offsetHeight) / 2 - this.root.y;
+      var w = document.documentElement.clientWidth || document.body.clientWidth;
+      var h = document.documentElement.clientHeight || document.body.clientHeight;
+      TrVec[0] -= (w - el.offsetWidth) / 2 - this.root.x;
+      TrVec[1] -= (h - el.offsetHeight) / 2 - this.root.y;
       _matrix.Mat4.fromTranslation(TrVec, TrMat);
 
       _matrix.Mat4.multiply(secTr, TrMat, secTr);
@@ -219,26 +242,24 @@ var Xiuli = function () {
       _matrix.Mat4.invert(secTr, secTr);
       _matrix.Mat4.multiply(this.mainTrans, secTr, secTr);
 
-      this.elements[targetId] = _matrix.Mat4.toCssTransform(secTr);
+      this.elements[el.id] = _matrix.Mat4.toCssTransform(secTr);
+      this.elementIds.push(el.id);
       if (move) {
-        this.main.style.transform = this.elements[targetId];
+        this.main.style.transform = this.elements[el.id];
         this.clicked = el;
       }
-      el.addEventListener('click', this[onMenuClick].bind(this));
-    }
-  }, {
-    key: onMenuClick,
-    value: function value(_ref) {
-      var target = _ref.target;
-
-      var targetId = target.getAttribute('xiuli-target');
-      this.main.style.transform = this.elements[targetId];
-      this.clicked = target;
     }
   }, {
     key: 'onTransitionend',
     value: function onTransitionend(fn) {
       this.callback = fn;
+    }
+  }, {
+    key: 'goto',
+    value: function goto(tId, clicked) {
+      this.main.style.transform = this.elements[tId];
+      this.clicked = clicked;
+      this.target = tId;
     }
   }]);
 
