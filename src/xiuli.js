@@ -1,5 +1,4 @@
 /* global document */
-/* eslint no-underscore-dangle: ["error", { "allow": ["_current", "_bar"] }] */
 
 import { Mat4, Vec3, getCSSStyles } from './matrix';
 
@@ -7,50 +6,33 @@ export default class Xiuli {
   constructor(mainContainer = 'xiuli') {
     this.elementIds = [];
     const xiulies = document.querySelectorAll('[xiuli-target]');
-    let _current = -1;
-    this.next = (clicked) => {
-      _current += 1;
-      if (_current >= this.elementIds.length) {
-        _current = 0;
-      }
-      const tId = this.elementIds[_current];
-      this.target = tId;
-      this.clicked = clicked;
-      this.main.style.transform = this.elements[tId];
-    };
-    this.pre = (clicked) => {
-      _current -= 1;
-      if (_current < 0) {
-        _current = this.elementIds.length - 1;
-      }
-      const tId = this.elementIds[_current];
-      this.target = tId;
-      this.clicked = clicked;
-      this.main.style.transform = this.elements[tId];
-    };
+    this.current = -1;
     this.main = document.getElementById(mainContainer);
+    this.main.style.position = 'absolute';
+    this.main.style.transformStyle = 'preserve-3d';
+    const { 'transition-duration': transitionDuration } = getCSSStyles(this.main, 'transition', 'transition-duration');
+    if (transitionDuration === '0s') {
+      this.main.style.transitionDuration = '2s';
+      this.main.style.WebkitTransitionDuration = '2s';
+    }
     this.root = this.main.parentElement;
     const { left, top } = this.root.getBoundingClientRect();
     this.root.x = left;
     this.root.y = top;
     this.callback = null;
-    this.clicked = null;
-    this.target = null;
+    this.data = null;
     this.main.addEventListener(
       'transitionend',
       () => {
         if (this.callback) {
-          this.callback(this.target, this.clicked);
-          this.clicked = null;
-          this.target = null;
+          this.callback(this.elementIds[this.current], this.data);
+          this.data = null;
         }
       },
       false,
     );
     this.mainTrans = Mat4.fromElement(this.main);
-
     this.elements = {};
-
     Array.prototype.forEach.call(xiulies, (el) => {
       this.add(el, false);
     });
@@ -89,9 +71,30 @@ export default class Xiuli {
   onTransitionend(fn) {
     this.callback = fn;
   }
-  goto(tId, clicked) {
-    this.main.style.transform = this.elements[tId];
-    this.clicked = clicked;
-    this.target = tId;
+  goto(tId, data) {
+    const i = this.elementIds.indexOf(tId);
+    if (i !== -1) {
+      this.main.style.transform = this.elements[tId];
+      this.data = data;
+      this.current = i;
+    }
+  }
+
+  pre(data) {
+    this.current -= 1;
+    if (this.current < 0) {
+      this.current = this.elementIds.length - 1;
+    }
+    const tId = this.elementIds[this.current];
+    this.goto(tId, data);
+  }
+
+  next(data) {
+    this.current += 1;
+    if (this.current >= this.elementIds.length) {
+      this.current = 0;
+    }
+    const tId = this.elementIds[this.current];
+    this.goto(tId, data);
   }
 }

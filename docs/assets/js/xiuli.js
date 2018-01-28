@@ -142,7 +142,6 @@ Object.defineProperty(exports, "__esModule", {
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* global document */
-/* eslint no-underscore-dangle: ["error", { "allow": ["_current", "_bar"] }] */
 
 var _matrix = __webpack_require__(3);
 
@@ -158,29 +157,18 @@ var Xiuli = function () {
 
     this.elementIds = [];
     var xiulies = document.querySelectorAll('[xiuli-target]');
-    var _current = -1;
-    this.next = function (clicked) {
-      _current += 1;
-      if (_current >= _this.elementIds.length) {
-        _current = 0;
-      }
-      var tId = _this.elementIds[_current];
-      _this.target = tId;
-      _this.clicked = clicked;
-      _this.main.style.transform = _this.elements[tId];
-    };
-    this.pre = function (clicked) {
-      _current -= 1;
-      if (_current < 0) {
-        _current = _this.elementIds.length - 1;
-      }
-      console.log(_current);
-      var tId = _this.elementIds[_current];
-      _this.target = tId;
-      _this.clicked = clicked;
-      _this.main.style.transform = _this.elements[tId];
-    };
+    this.current = -1;
     this.main = document.getElementById(mainContainer);
+    this.main.style.position = 'absolute';
+    this.main.style.transformStyle = 'preserve-3d';
+
+    var _getCSSStyles = (0, _matrix.getCSSStyles)(this.main, 'transition', 'transition-duration'),
+        transitionDuration = _getCSSStyles['transition-duration'];
+
+    if (transitionDuration === '0s') {
+      this.main.style.transitionDuration = '2s';
+      this.main.style.WebkitTransitionDuration = '2s';
+    }
     this.root = this.main.parentElement;
 
     var _root$getBoundingClie = this.root.getBoundingClientRect(),
@@ -190,19 +178,15 @@ var Xiuli = function () {
     this.root.x = left;
     this.root.y = top;
     this.callback = null;
-    this.clicked = null;
-    this.target = null;
+    this.data = null;
     this.main.addEventListener('transitionend', function () {
       if (_this.callback) {
-        _this.callback(_this.target, _this.clicked);
-        _this.clicked = null;
-        _this.target = null;
+        _this.callback(_this.elementIds[_this.current], _this.data);
+        _this.data = null;
       }
     }, false);
     this.mainTrans = _matrix.Mat4.fromElement(this.main);
-
     this.elements = {};
-
     Array.prototype.forEach.call(xiulies, function (el) {
       _this.add(el, false);
     });
@@ -211,9 +195,9 @@ var Xiuli = function () {
   _createClass(Xiuli, [{
     key: 'add',
     value: function add(el, move) {
-      var _getCSSStyles = (0, _matrix.getCSSStyles)(el, 'transform', 'transform-origin'),
-          transform = _getCSSStyles.transform,
-          transformOrigin = _getCSSStyles['transform-origin'];
+      var _getCSSStyles2 = (0, _matrix.getCSSStyles)(el, 'transform', 'transform-origin'),
+          transform = _getCSSStyles2.transform,
+          transformOrigin = _getCSSStyles2['transform-origin'];
 
       var re = /[-+]?[0-9]*\.?[0-9]+/g;
 
@@ -256,10 +240,33 @@ var Xiuli = function () {
     }
   }, {
     key: 'goto',
-    value: function goto(tId, clicked) {
-      this.main.style.transform = this.elements[tId];
-      this.clicked = clicked;
-      this.target = tId;
+    value: function goto(tId, data) {
+      var i = this.elementIds.indexOf(tId);
+      if (i !== -1) {
+        this.main.style.transform = this.elements[tId];
+        this.data = data;
+        this.current = i;
+      }
+    }
+  }, {
+    key: 'pre',
+    value: function pre(data) {
+      this.current -= 1;
+      if (this.current < 0) {
+        this.current = this.elementIds.length - 1;
+      }
+      var tId = this.elementIds[this.current];
+      this.goto(tId, data);
+    }
+  }, {
+    key: 'next',
+    value: function next(data) {
+      this.current += 1;
+      if (this.current >= this.elementIds.length) {
+        this.current = 0;
+      }
+      var tId = this.elementIds[this.current];
+      this.goto(tId, data);
     }
   }]);
 
