@@ -141,7 +141,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* global document window */
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* global document */
 
 var _matrix = __webpack_require__(3);
 
@@ -155,8 +155,20 @@ var Xiuli = function () {
 
     _classCallCheck(this, Xiuli);
 
-    var buttons = document.querySelectorAll('[xiuli-target]');
+    this.elementIds = [];
+    var xiulies = document.querySelectorAll('[xiuli-target]');
+    this.current = -1;
     this.main = document.getElementById(mainContainer);
+    this.main.style.position = 'absolute';
+    this.main.style.transformStyle = 'preserve-3d';
+
+    var _getCSSStyles = (0, _matrix.getCSSStyles)(this.main, 'transition', 'transition-duration'),
+        transitionDuration = _getCSSStyles['transition-duration'];
+
+    if (transitionDuration === '0s') {
+      this.main.style.transitionDuration = '2s';
+      this.main.style.WebkitTransitionDuration = '2s';
+    }
     this.root = this.main.parentElement;
 
     var _root$getBoundingClie = this.root.getBoundingClientRect(),
@@ -166,17 +178,16 @@ var Xiuli = function () {
     this.root.x = left;
     this.root.y = top;
     this.callback = null;
-    this.clicked = null;
+    this.data = null;
     this.main.addEventListener('transitionend', function () {
-      if (_this.callback && _this.clicked) {
-        _this.callback(_this.clicked);
-        _this.clicked = null;
+      if (_this.callback) {
+        _this.callback(_this.elementIds[_this.current], _this.data);
+        _this.data = null;
       }
     }, false);
     this.mainTrans = _matrix.Mat4.fromElement(this.main);
-
     this.elements = {};
-    Array.prototype.forEach.call(buttons, function (el) {
+    Array.prototype.forEach.call(xiulies, function (el) {
       _this.add(el, false);
     });
   }
@@ -184,12 +195,9 @@ var Xiuli = function () {
   _createClass(Xiuli, [{
     key: 'add',
     value: function add(el, move) {
-      var targetId = el.getAttribute('xiuli-target');
-      var target = document.getElementById(targetId);
-
-      var _getCSSStyles = (0, _matrix.getCSSStyles)(target, 'transform', 'transform-origin'),
-          transform = _getCSSStyles.transform,
-          transformOrigin = _getCSSStyles['transform-origin'];
+      var _getCSSStyles2 = (0, _matrix.getCSSStyles)(el, 'transform', 'transform-origin'),
+          transform = _getCSSStyles2.transform,
+          transformOrigin = _getCSSStyles2['transform-origin'];
 
       var re = /[-+]?[0-9]*\.?[0-9]+/g;
 
@@ -207,19 +215,23 @@ var Xiuli = function () {
       var TrMat = _matrix.Mat4.fromTranslation(TrVec);
       _matrix.Mat4.multiply(TrMat, secTr, secTr);
       _matrix.Vec3.negate(TrVec, TrVec);
-      TrVec[0] -= (window.innerWidth - target.offsetWidth) / 2 - this.root.x;
-      TrVec[1] -= (window.innerHeight - target.offsetHeight) / 2 - this.root.y;
+      var w = document.documentElement.clientWidth || document.body.clientWidth;
+      var h = document.documentElement.clientHeight || document.body.clientHeight;
+      TrVec[0] -= (w - el.offsetWidth) / 2 - this.root.x;
+      TrVec[1] -= (h - el.offsetHeight) / 2 - this.root.y;
       _matrix.Mat4.fromTranslation(TrVec, TrMat);
       _matrix.Mat4.multiply(secTr, TrMat, secTr);
 
       _matrix.Mat4.invert(secTr, secTr);
       _matrix.Mat4.multiply(this.mainTrans, secTr, secTr);
 
-      this.elements[targetId] = _matrix.Mat4.toCssTransform(secTr);
+      this.elements[el.id] = _matrix.Mat4.toCssTransform(secTr);
+      this.elementIds.push(el.id);
       if (move) {
-        this.main.style.transform = this.elements[targetId];
+        this.main.style.transform = this.elements[el.id];
         this.clicked = el;
       }
+<<<<<<< HEAD
       el.addEventListener('click', this.onMenuClick.bind(this));
     }
   }, {
@@ -230,11 +242,43 @@ var Xiuli = function () {
       var targetId = target.getAttribute('xiuli-target');
       this.main.style.transform = this.elements[targetId];
       this.clicked = target;
+=======
+>>>>>>> c90a83d8e2d8c2ead332a34db961cf540f0de815
     }
   }, {
     key: 'onTransitionend',
     value: function onTransitionend(fn) {
       this.callback = fn;
+    }
+  }, {
+    key: 'goto',
+    value: function goto(tId, data) {
+      var i = this.elementIds.indexOf(tId);
+      if (i !== -1) {
+        this.main.style.transform = this.elements[tId];
+        this.data = data;
+        this.current = i;
+      }
+    }
+  }, {
+    key: 'pre',
+    value: function pre(data) {
+      this.current -= 1;
+      if (this.current < 0) {
+        this.current = this.elementIds.length - 1;
+      }
+      var tId = this.elementIds[this.current];
+      this.goto(tId, data);
+    }
+  }, {
+    key: 'next',
+    value: function next(data) {
+      this.current += 1;
+      if (this.current >= this.elementIds.length) {
+        this.current = 0;
+      }
+      var tId = this.elementIds[this.current];
+      this.goto(tId, data);
     }
   }]);
 

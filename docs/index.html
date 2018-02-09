@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Xiuli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         body {
             overflow: hidden;
             -webkit-perspective: 1000px;
+            -moz-perspective: 1000px;
             perspective: 1000px;
             background: #16222A;
             background: -webkit-linear-gradient(to right, #3A6073, #16222A);
+            background: -moz-linear-gradient(to right, #3A6073, #16222A);
             background: linear-gradient(to right, #3A6073, #16222A);
-
         }
 
         #menu {
@@ -24,15 +26,18 @@
         }
 
         #xiuli {
-            position: absolute;
-            -webkit-transition: all 2s;
-            transition: all 2s;
-            -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
+            /* transition-duration: 2s; */
+            /* -webkit-transition: all 2s;
+            -moz-transition: all 2s;
+            transition: all 2s; */
         }
 
         #section1 {
             width: 90vw;
+<<<<<<< HEAD
+=======
+            min-width: 30px;
+>>>>>>> c90a83d8e2d8c2ead332a34db961cf540f0de815
             height: 90vh;
             position: absolute;
             background: red;
@@ -44,6 +49,7 @@
             position: absolute;
             background: yellow;
             -webkit-transform: translate3d(2000px, 0, 1px);
+            -moz-transform: translate3d(2000px, 0, 1px);
             transform: translate3d(2000px, 0, 1px);
         }
 
@@ -53,6 +59,7 @@
             position: absolute;
             background: blue;
             -webkit-transform: translate3d(-1300px, 0, 0) rotate3d(1, 0, 0, 90deg);
+            -moz-transform: translate3d(-1300px, 0, 0) rotate3d(1, 0, 0, 90deg);
             transform: translate3d(-1300px, 0, 0) rotate3d(1, 0, 0, 90deg);
         }
 
@@ -63,6 +70,7 @@
             background: black;
             color: white;
             -webkit-transform: translate3d(-1300px, -1300px, 0) rotate3d(1, 0, 1, 90deg);
+            -moz-transform: translate3d(-1300px, -1300px, 0) rotate3d(1, 0, 1, 90deg);
             transform: translate3d(-1300px, -1300px, 0) rotate3d(1, 0, 1, 90deg);
         }
 
@@ -72,6 +80,7 @@
             position: absolute;
             background: green;
             -webkit-transform: translate3d(-1300px, 0, -1300px) rotate3d(1, 0, 1, 90deg);
+            -moz-transform: translate3d(-1300px, 0, -1300px) rotate3d(1, 0, 1, 90deg);
             transform: translate3d(-1300px, 0, -1300px) rotate3d(1, 0, 1, 90deg);
         }
     </style>
@@ -79,26 +88,28 @@
 
 <body>
     <div id="menu">
-        <button type="button" id="button1" xiuli-target="section1">section1</button>
-        <button type="button" id="button2" xiuli-target="section2">section2</button>
-        <button type="button" id="button3" xiuli-target="section3">section3</button>
-        <button type="button" id="button4" xiuli-target="section4">section4</button>
-        <button type="button" id="button5" xiuli-target="section5">section5</button>
+        <button type="button" id="button1" onclick="xiuli.goto('section1',this)">section1</button>
+        <button type="button" id="button2" onclick="xiuli.goto('section2',this)">section2</button>
+        <button type="button" id="button3" onclick="xiuli.goto('section3',this)">section3</button>
+        <button type="button" id="button4" onclick="xiuli.goto('section4',this)">section4</button>
+        <button type="button" id="button5" onclick="xiuli.goto('section5',this)">section5</button>
+        <button type="button" id="pre" onclick="xiuli.pre()">Previous</button>
+        <button type="button" id="next" onclick="xiuli.next()">Next</button>
     </div>
     <div id="xiuli">
-        <div id="section1">
+        <div id="section1" xiuli-target>
             <h1>Section 1</h1>
         </div>
-        <div id="section2">
+        <div id="section2" xiuli-target>
             <h1>Section 2</h1>
         </div>
-        <div id="section3">
+        <div id="section3" xiuli-target>
             <h1>Section 3</h1>
         </div>
-        <div id="section4">
+        <div id="section4" xiuli-target>
             <h1>Section 4</h1>
         </div>
-        <div id="section5">
+        <div id="section5" xiuli-target>
             <h1>Section 5</h1>
         </div>
     </div>
