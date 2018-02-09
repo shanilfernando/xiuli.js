@@ -7,9 +7,9 @@ export default class Xiuli {
     const buttons = document.querySelectorAll('[xiuli-target]');
     this.main = document.getElementById(mainContainer);
     this.root = this.main.parentElement;
-    const { x, y } = this.root.getBoundingClientRect();
-    this.root.x = x;
-    this.root.y = y;
+    const { left, top } = this.root.getBoundingClientRect();
+    this.root.x = left;
+    this.root.y = top;
     this.callback = null;
     this.clicked = null;
     this.main.addEventListener(
@@ -36,7 +36,6 @@ export default class Xiuli {
     const { transform, 'transform-origin': transformOrigin } = getCSSStyles(target, 'transform', 'transform-origin');
     const re = /[-+]?[0-9]*\.?[0-9]+/g;
     const [x = 0.0, y = 0.0, z = 0.0] = transformOrigin.match(re);
-
     const secTr = Mat4.fromCSSTransform(transform);
     const TrVec = Vec3.fromValues(x, y, z);
     const TrMat = Mat4.fromTranslation(TrVec);
@@ -45,7 +44,6 @@ export default class Xiuli {
     TrVec[0] -= ((window.innerWidth - target.offsetWidth) / 2) - this.root.x;
     TrVec[1] -= ((window.innerHeight - target.offsetHeight) / 2) - this.root.y;
     Mat4.fromTranslation(TrVec, TrMat);
-
     Mat4.multiply(secTr, TrMat, secTr);
 
     Mat4.invert(secTr, secTr);

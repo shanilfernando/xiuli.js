@@ -127,7 +127,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var xiuli = new _xiuli2.default(); /* global */
 
 module.exports = xiuli;
-console.log(xiuli);
 
 /***/ }),
 /* 2 */
@@ -148,8 +147,6 @@ var _matrix = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var onMenuClick = Symbol('onMenuClick');
-
 var Xiuli = function () {
   function Xiuli() {
     var _this = this;
@@ -163,11 +160,11 @@ var Xiuli = function () {
     this.root = this.main.parentElement;
 
     var _root$getBoundingClie = this.root.getBoundingClientRect(),
-        x = _root$getBoundingClie.x,
-        y = _root$getBoundingClie.y;
+        left = _root$getBoundingClie.left,
+        top = _root$getBoundingClie.top;
 
-    this.root.x = x;
-    this.root.y = y;
+    this.root.x = left;
+    this.root.y = top;
     this.callback = null;
     this.clicked = null;
     this.main.addEventListener('transitionend', function () {
@@ -213,7 +210,6 @@ var Xiuli = function () {
       TrVec[0] -= (window.innerWidth - target.offsetWidth) / 2 - this.root.x;
       TrVec[1] -= (window.innerHeight - target.offsetHeight) / 2 - this.root.y;
       _matrix.Mat4.fromTranslation(TrVec, TrMat);
-
       _matrix.Mat4.multiply(secTr, TrMat, secTr);
 
       _matrix.Mat4.invert(secTr, secTr);
@@ -224,11 +220,11 @@ var Xiuli = function () {
         this.main.style.transform = this.elements[targetId];
         this.clicked = el;
       }
-      el.addEventListener('click', this[onMenuClick].bind(this));
+      el.addEventListener('click', this.onMenuClick.bind(this));
     }
   }, {
-    key: onMenuClick,
-    value: function value(_ref) {
+    key: 'onMenuClick',
+    value: function onMenuClick(_ref) {
       var target = _ref.target;
 
       var targetId = target.getAttribute('xiuli-target');
