@@ -70,11 +70,42 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Xiuli;
+
+var _xiuli = __webpack_require__(2);
+
+var _xiuli2 = _interopRequireDefault(_xiuli);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Xiuli(mainContainer) {
+  var xiuli = new _xiuli2.default(mainContainer);
+  var add = xiuli.add,
+      pre = xiuli.pre,
+      next = xiuli.next,
+      onTransitionend = xiuli.onTransitionend,
+      goto = xiuli.goto;
+
+  return {
+    add: add, pre: pre, next: next, onTransitionend: onTransitionend, goto: goto
+  };
+}
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -110,23 +141,6 @@ function getCSSStyles(el) {
 
 exports.ARRAY_TYPE = ARRAY_TYPE;
 exports.getCSSStyles = getCSSStyles;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _xiuli = __webpack_require__(2);
-
-var _xiuli2 = _interopRequireDefault(_xiuli);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var xiuli = new _xiuli2.default(); /* global */
-
-module.exports = xiuli;
 
 /***/ }),
 /* 2 */
@@ -231,19 +245,6 @@ var Xiuli = function () {
         this.main.style.transform = this.elements[el.id];
         this.clicked = el;
       }
-<<<<<<< HEAD
-      el.addEventListener('click', this.onMenuClick.bind(this));
-    }
-  }, {
-    key: 'onMenuClick',
-    value: function onMenuClick(_ref) {
-      var target = _ref.target;
-
-      var targetId = target.getAttribute('xiuli-target');
-      this.main.style.transform = this.elements[targetId];
-      this.clicked = target;
-=======
->>>>>>> c90a83d8e2d8c2ead332a34db961cf540f0de815
     }
   }, {
     key: 'onTransitionend',
@@ -299,7 +300,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Mat4 = exports.Vec3 = exports.getCSSStyles = exports.ARRAY_TYPE = undefined;
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _vec = __webpack_require__(4);
 
@@ -330,7 +331,7 @@ exports.fromValues = fromValues;
 exports.copy = copy;
 exports.negate = negate;
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 /**
  * Creates a new vec3 initialized with the given values
@@ -401,7 +402,7 @@ exports.fromCSSTransform = fromCSSTransform;
 exports.fromElement = fromElement;
 exports.toCssTransform = toCssTransform;
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 /**
  * Creates a new 4 x 4 identity Matrix.

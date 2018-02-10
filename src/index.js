@@ -1,10 +1,11 @@
-/* global */
-import Xiuli from './xiuli';
+import Xl from './xiuli';
 
-
-const xiuli = new Xiuli();
-module.exports = xiuli;
-<<<<<<< HEAD
-=======
-
->>>>>>> c90a83d8e2d8c2ead332a34db961cf540f0de815
+export default function Xiuli(mainContainer) {
+  const xiuli = new Xl(mainContainer);
+  const {
+    add, pre, next, onTransitionend, goto,
+  } = xiuli;
+  return {
+    add, pre, next, onTransitionend, goto,
+  };
+}
