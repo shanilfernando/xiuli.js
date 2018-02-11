@@ -7,10 +7,11 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --env dev && webpack --env build",
+    "build:gulp": "gulp",
     "dev": "webpack --progress --colors --watch --env dev",
-    "selenium": "webdriver-manager start",
     "test": "protractor conf.js",
-    "doc": "esdoc"
+    "doc": "esdoc",
+    "config_test": "webdriver-manager update"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -25,9 +26,13 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.8.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.1",
     "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.2.2",
+    "remove": "^0.1.5",
     "webpack": "^3.10.0",
+    "webpack-stream": "^4.0.1",
     "yargs": "^10.0.3"
   }
 }

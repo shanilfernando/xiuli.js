@@ -12,21 +12,18 @@ const plugins = [];
 
 let outputFile = `${library.name}`;
 
-if (env === 'build') {
   plugins.push(new UglifyJsPlugin({
     minimize: true,
   }));
   outputFile = `${library.name}.min`;
-} else {
-  plugins.push(new BrowserSyncPlugin({
+/*   plugins.push(new BrowserSyncPlugin({
     host: '0.0.0.0',
-    port: 3000,
+    port: 5656,
     server: {
       baseDir: ['docs'],
     },
     files: ['docs/index.html'],
-  }));
-}
+  })); */
 
 const entry = {
   [`lib/${outputFile}`]: `${__dirname}/src/index.js`,
@@ -39,7 +36,7 @@ const config = {
   output: {
     path: `${__dirname}/`,
     filename: '[name].js',
-    library: library.name,
+    library: library.name.charAt(0).toUpperCase() + library.name.slice(1),
     libraryTarget: 'umd',
     umdNamedDefine: true,
   },

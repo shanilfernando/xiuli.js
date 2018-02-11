@@ -2,11 +2,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("xiuli", [], factory);
+		define("Xiuli", [], factory);
 	else if(typeof exports === 'object')
-		exports["xiuli"] = factory();
+		exports["Xiuli"] = factory();
 	else
-		root["xiuli"] = factory();
+		root["Xiuli"] = factory();
 })(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -70,42 +70,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = Xiuli;
-
-var _xiuli = __webpack_require__(2);
-
-var _xiuli2 = _interopRequireDefault(_xiuli);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Xiuli(mainContainer) {
-  var xiuli = new _xiuli2.default(mainContainer);
-  var add = xiuli.add,
-      pre = xiuli.pre,
-      next = xiuli.next,
-      onTransitionend = xiuli.onTransitionend,
-      goto = xiuli.goto;
-
-  return {
-    add: add, pre: pre, next: next, onTransitionend: onTransitionend, goto: goto
-  };
-}
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -141,6 +110,30 @@ function getCSSStyles(el) {
 
 exports.ARRAY_TYPE = ARRAY_TYPE;
 exports.getCSSStyles = getCSSStyles;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _xiuli = __webpack_require__(2);
+
+var _xiuli2 = _interopRequireDefault(_xiuli);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Xiuli(selector) {
+  var xiuli = new _xiuli2.default(selector);
+  return {
+    goto: xiuli.goto.bind(xiuli),
+    pre: xiuli.pre.bind(xiuli),
+    next: xiuli.next.bind(xiuli),
+    onTransitionend: xiuli.onTransitionend.bind(xiuli)
+  };
+}
+module.exports = Xiuli;
 
 /***/ }),
 /* 2 */
@@ -300,7 +293,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Mat4 = exports.Vec3 = exports.getCSSStyles = exports.ARRAY_TYPE = undefined;
 
-var _util = __webpack_require__(1);
+var _util = __webpack_require__(0);
 
 var _vec = __webpack_require__(4);
 
@@ -331,7 +324,7 @@ exports.fromValues = fromValues;
 exports.copy = copy;
 exports.negate = negate;
 
-var _util = __webpack_require__(1);
+var _util = __webpack_require__(0);
 
 /**
  * Creates a new vec3 initialized with the given values
@@ -402,7 +395,7 @@ exports.fromCSSTransform = fromCSSTransform;
 exports.fromElement = fromElement;
 exports.toCssTransform = toCssTransform;
 
-var _util = __webpack_require__(1);
+var _util = __webpack_require__(0);
 
 /**
  * Creates a new 4 x 4 identity Matrix.

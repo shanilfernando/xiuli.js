@@ -1,11 +1,12 @@
 import Xl from './xiuli';
 
-export default function Xiuli(mainContainer) {
-  const xiuli = new Xl(mainContainer);
-  const {
-    add, pre, next, onTransitionend, goto,
-  } = xiuli;
+function Xiuli(selector) {
+  const xiuli = new Xl(selector);
   return {
-    add, pre, next, onTransitionend, goto,
+    goto: xiuli.goto.bind(xiuli),
+    pre: xiuli.pre.bind(xiuli),
+    next: xiuli.next.bind(xiuli),
+    onTransitionend: xiuli.onTransitionend.bind(xiuli),
   };
 }
+module.exports = Xiuli;

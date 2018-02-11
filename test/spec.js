@@ -4,7 +4,7 @@ describe('Protractor Demo App', () => {
   const wideElements = ['button1', 'button2', 'button3', 'button4', 'button5', 'pre', 'pre', 'next', 'next'];
   beforeAll(async () => {
     await browser.waitForAngularEnabled(false);
-    await browser.get('http://localhost:3000');
+    await browser.get('http://localhost:5656');
   });
 
   it('should have title Xiuli', async () => {
