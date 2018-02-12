@@ -1,6 +1,6 @@
 /* global describe beforeAll browser it expect element by xiuli */
 
-describe('Protractor Demo App', () => {
+describe('Xiuli', () => {
   const wideElements = ['button1', 'button2', 'button3', 'button4', 'button5', 'pre', 'pre', 'next', 'next'];
   beforeAll(async () => {
     await browser.waitForAngularEnabled(false);

@@ -1,27 +1,87 @@
 window.esdocSearchIndex = [
   [
-    "xiuli/src/matrix/util.js~array_type2",
-    "variable/index.html#static-variable-ARRAY_TYPE2",
-    "<span>ARRAY_TYPE2</span> <span class=\"search-result-import-path\">xiuli/src/matrix/util.js</span>",
-    "variable"
-  ],
-  [
     "xiuli/src/matrix/util.js~array_type",
     "variable/index.html#static-variable-ARRAY_TYPE",
     "<span>ARRAY_TYPE</span> <span class=\"search-result-import-path\">xiuli/src/matrix/util.js</span>",
     "variable"
   ],
   [
-    "xiuli/src/matrix/mat4.js~mat4",
-    "class/src/matrix/mat4.js~Mat4.html",
-    "<span>Mat4</span> <span class=\"search-result-import-path\">xiuli/src/matrix/mat4.js</span>",
-    "class"
-  ],
-  [
     "xiuli/src/xiuli.js~xiuli",
     "class/src/xiuli.js~Xiuli.html",
     "<span>Xiuli</span> <span class=\"search-result-import-path\">xiuli/src/xiuli.js</span>",
     "class"
+  ],
+  [
+    "xiuli/src/matrix/mat4.js~copy",
+    "function/index.html#static-function-copy",
+    "<span>copy</span> <span class=\"search-result-import-path\">xiuli/src/matrix/mat4.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/vec3.js~copy",
+    "function/index.html#static-function-copy",
+    "<span>copy</span> <span class=\"search-result-import-path\">xiuli/src/matrix/vec3.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/mat4.js~create",
+    "function/index.html#static-function-create",
+    "<span>create</span> <span class=\"search-result-import-path\">xiuli/src/matrix/mat4.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/mat4.js~fromcsstransform",
+    "function/index.html#static-function-fromCSSTransform",
+    "<span>fromCSSTransform</span> <span class=\"search-result-import-path\">xiuli/src/matrix/mat4.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/mat4.js~fromelement",
+    "function/index.html#static-function-fromElement",
+    "<span>fromElement</span> <span class=\"search-result-import-path\">xiuli/src/matrix/mat4.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/mat4.js~fromtranslation",
+    "function/index.html#static-function-fromTranslation",
+    "<span>fromTranslation</span> <span class=\"search-result-import-path\">xiuli/src/matrix/mat4.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/vec3.js~fromvalues",
+    "function/index.html#static-function-fromValues",
+    "<span>fromValues</span> <span class=\"search-result-import-path\">xiuli/src/matrix/vec3.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/util.js~getcssstyles",
+    "function/index.html#static-function-getCSSStyles",
+    "<span>getCSSStyles</span> <span class=\"search-result-import-path\">xiuli/src/matrix/util.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/mat4.js~invert",
+    "function/index.html#static-function-invert",
+    "<span>invert</span> <span class=\"search-result-import-path\">xiuli/src/matrix/mat4.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/mat4.js~multiply",
+    "function/index.html#static-function-multiply",
+    "<span>multiply</span> <span class=\"search-result-import-path\">xiuli/src/matrix/mat4.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/vec3.js~negate",
+    "function/index.html#static-function-negate",
+    "<span>negate</span> <span class=\"search-result-import-path\">xiuli/src/matrix/vec3.js</span>",
+    "function"
+  ],
+  [
+    "xiuli/src/matrix/mat4.js~tocsstransform",
+    "function/index.html#static-function-toCssTransform",
+    "<span>toCssTransform</span> <span class=\"search-result-import-path\">xiuli/src/matrix/mat4.js</span>",
+    "function"
   ],
   [
     "src/.external-ecmascript.js~array",
@@ -306,12 +366,6 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "src/index.js",
-    "file/src/index.js.html",
-    "src/index.js",
-    "file"
-  ],
-  [
     "src/matrix/index.js",
     "file/src/matrix/index.js.html",
     "src/matrix/index.js",
@@ -324,27 +378,15 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/matrix/mat4.js~mat4.copy",
-    "class/src/matrix/mat4.js~Mat4.html#static-method-copy",
-    "src/matrix/mat4.js~Mat4.copy",
-    "method"
-  ],
-  [
-    "src/matrix/mat4.js~mat4.create",
-    "class/src/matrix/mat4.js~Mat4.html#static-method-create",
-    "src/matrix/mat4.js~Mat4.create",
-    "method"
-  ],
-  [
-    "src/matrix/mat4.js~mat4.fromcsstransform",
-    "class/src/matrix/mat4.js~Mat4.html#static-method-fromCSSTransform",
-    "src/matrix/mat4.js~Mat4.fromCSSTransform",
-    "method"
-  ],
-  [
     "src/matrix/util.js",
     "file/src/matrix/util.js.html",
     "src/matrix/util.js",
+    "file"
+  ],
+  [
+    "src/matrix/vec3.js",
+    "file/src/matrix/vec3.js.html",
+    "src/matrix/vec3.js",
     "file"
   ],
   [
@@ -354,9 +396,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/xiuli.js~xiuli#console",
-    "class/src/xiuli.js~Xiuli.html#instance-member-console",
-    "src/xiuli.js~Xiuli#console",
+    "src/xiuli.js~xiuli#add",
+    "class/src/xiuli.js~Xiuli.html#instance-method-add",
+    "src/xiuli.js~Xiuli#add",
+    "method"
+  ],
+  [
+    "src/xiuli.js~xiuli#callback",
+    "class/src/xiuli.js~Xiuli.html#instance-member-callback",
+    "src/xiuli.js~Xiuli#callback",
+    "member"
+  ],
+  [
+    "src/xiuli.js~xiuli#clicked",
+    "class/src/xiuli.js~Xiuli.html#instance-member-clicked",
+    "src/xiuli.js~Xiuli#clicked",
     "member"
   ],
   [
@@ -366,9 +420,69 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/xiuli.js~xiuli#test",
-    "class/src/xiuli.js~Xiuli.html#instance-method-test",
-    "src/xiuli.js~Xiuli#test",
+    "src/xiuli.js~xiuli#current",
+    "class/src/xiuli.js~Xiuli.html#instance-member-current",
+    "src/xiuli.js~Xiuli#current",
+    "member"
+  ],
+  [
+    "src/xiuli.js~xiuli#data",
+    "class/src/xiuli.js~Xiuli.html#instance-member-data",
+    "src/xiuli.js~Xiuli#data",
+    "member"
+  ],
+  [
+    "src/xiuli.js~xiuli#elementids",
+    "class/src/xiuli.js~Xiuli.html#instance-member-elementIds",
+    "src/xiuli.js~Xiuli#elementIds",
+    "member"
+  ],
+  [
+    "src/xiuli.js~xiuli#elements",
+    "class/src/xiuli.js~Xiuli.html#instance-member-elements",
+    "src/xiuli.js~Xiuli#elements",
+    "member"
+  ],
+  [
+    "src/xiuli.js~xiuli#goto",
+    "class/src/xiuli.js~Xiuli.html#instance-method-goto",
+    "src/xiuli.js~Xiuli#goto",
     "method"
+  ],
+  [
+    "src/xiuli.js~xiuli#main",
+    "class/src/xiuli.js~Xiuli.html#instance-member-main",
+    "src/xiuli.js~Xiuli#main",
+    "member"
+  ],
+  [
+    "src/xiuli.js~xiuli#maintrans",
+    "class/src/xiuli.js~Xiuli.html#instance-member-mainTrans",
+    "src/xiuli.js~Xiuli#mainTrans",
+    "member"
+  ],
+  [
+    "src/xiuli.js~xiuli#next",
+    "class/src/xiuli.js~Xiuli.html#instance-method-next",
+    "src/xiuli.js~Xiuli#next",
+    "method"
+  ],
+  [
+    "src/xiuli.js~xiuli#ontransitionend",
+    "class/src/xiuli.js~Xiuli.html#instance-method-onTransitionend",
+    "src/xiuli.js~Xiuli#onTransitionend",
+    "method"
+  ],
+  [
+    "src/xiuli.js~xiuli#pre",
+    "class/src/xiuli.js~Xiuli.html#instance-method-pre",
+    "src/xiuli.js~Xiuli#pre",
+    "method"
+  ],
+  [
+    "src/xiuli.js~xiuli#root",
+    "class/src/xiuli.js~Xiuli.html#instance-member-root",
+    "src/xiuli.js~Xiuli#root",
+    "member"
   ]
 ]

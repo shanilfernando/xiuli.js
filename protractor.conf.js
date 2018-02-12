@@ -4,7 +4,7 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 exports.config = {
   framework: 'jasmine',
   directConnect: true,
-  specs: ['test/spec.js'],
+  specs: ['test/xiuli.spec.js'],
   maxSessions: 1,
   multiCapabilities: [{
     browserName: 'firefox',

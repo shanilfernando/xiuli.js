@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "name": "getCSSStyles",
+    "filePath": "src/matrix/util.js",
+    "lines": [
+      {
+        "lineNumber": 4,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 5,
+        "line": " * Get CSS transform."
+      },
+      {
+        "lineNumber": 6,
+        "line": " *"
+      },
+      {
+        "lineNumber": 7,
+        "line": " * @param {HTMLElement} el HTML element"
+      },
+      {
+        "lineNumber": 8,
+        "line": " * @returns {string} transform"
+      },
+      {
+        "lineNumber": 9,
+        "line": " */"
+      },
+      {
+        "lineNumber": 10,
+        "line": "function getCSSStyles(el, ...properties) {"
+      }
+    ],
+    "codeParams": [
+      "el",
+      "properties"
+    ],
+    "docParams": [
+      "el"
+    ]
+  }
+]

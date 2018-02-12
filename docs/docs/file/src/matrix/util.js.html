@@ -30,17 +30,51 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/xiuli.js~Xiuli.html">Xiuli</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matrix">matrix</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matrix/mat4.js~Mat4.html">Mat4</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matrix">matrix</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copy">copy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-create">create</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromCSSTransform">fromCSSTransform</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromElement">fromElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromTranslation">fromTranslation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-invert">invert</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-multiply">multiply</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toCssTransform">toCssTransform</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getCSSStyles">getCSSStyles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copy">copy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromValues">fromValues</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-negate">negate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ARRAY_TYPE">ARRAY_TYPE</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ARRAY_TYPE2">ARRAY_TYPE2</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/matrix/util.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const ARRAY_TYPE = typeof Float32Array !== &apos;undefined&apos; ? Float32Array : Array;
-const ARRAY_TYPE2 = typeof Float32Array !== &apos;undefined&apos; ? Float32Array : Array;
-export { ARRAY_TYPE, ARRAY_TYPE2 };
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* global getComputedStyle */
+
+const ARRAY_TYPE = typeof Float32Array !== &apos;undefined&apos; ? Float32Array : Array;
+
+/**
+ * Get CSS transform.
+ *
+ * @param {HTMLElement} el HTML element
+ * @returns {string} transform
+ */
+function getCSSStyles(el, ...properties) {
+  const style = getComputedStyle(el, null);
+  const result = {};
+  properties.forEach((value) =&gt; {
+    const property =
+      style.getPropertyValue(`-webkit-${value}`) ||
+      style.getPropertyValue(`-moz-${value}`) ||
+      style.getPropertyValue(`-ms-${value}`) ||
+      style.getPropertyValue(`-o-${value}`) ||
+      style.getPropertyValue(`${value}`) ||
+      &apos;none&apos;;
+    result[value] = property;
+  });
+  return result;
+}
+
+export { ARRAY_TYPE, getCSSStyles };
 </code></pre>
 
 </div>

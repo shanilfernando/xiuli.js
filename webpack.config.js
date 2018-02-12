@@ -12,10 +12,10 @@ const plugins = [];
 
 let outputFile = `${library.name}`;
 
-  plugins.push(new UglifyJsPlugin({
+/*   plugins.push(new UglifyJsPlugin({
     minimize: true,
   }));
-  outputFile = `${library.name}.min`;
+  outputFile = `${library.name}.min`; */
 /*   plugins.push(new BrowserSyncPlugin({
     host: '0.0.0.0',
     port: 5656,
@@ -25,17 +25,18 @@ let outputFile = `${library.name}`;
     files: ['docs/index.html'],
   })); */
 
-const entry = {
+/* const entry = {
   [`lib/${outputFile}`]: `${__dirname}/src/index.js`,
   [`docs/assets/js/${outputFile}`]: `${__dirname}/src/index.js`,
-};
+}; */
+const entry = `${__dirname}/index.js`;
 
 const config = {
   entry,
   devtool: 'source-map',
   output: {
     path: `${__dirname}/`,
-    filename: '[name].js',
+    filename: `${outputFile}.js`,
     library: library.name.charAt(0).toUpperCase() + library.name.slice(1),
     libraryTarget: 'umd',
     umdNamedDefine: true,

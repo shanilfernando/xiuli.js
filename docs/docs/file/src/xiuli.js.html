@@ -30,21 +30,120 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/xiuli.js~Xiuli.html">Xiuli</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matrix">matrix</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matrix/mat4.js~Mat4.html">Mat4</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matrix">matrix</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copy">copy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-create">create</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromCSSTransform">fromCSSTransform</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromElement">fromElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromTranslation">fromTranslation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-invert">invert</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-multiply">multiply</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toCssTransform">toCssTransform</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getCSSStyles">getCSSStyles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copy">copy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromValues">fromValues</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-negate">negate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ARRAY_TYPE">ARRAY_TYPE</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ARRAY_TYPE2">ARRAY_TYPE2</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/xiuli.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export default class Xiuli {
-  constructor() {
-    this.console = console;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* global document */
+
+import { Mat4, Vec3, getCSSStyles } from &apos;./matrix&apos;;
+
+export default class Xiuli {
+  constructor(mainContainer = &apos;xiuli&apos;) {
+    this.elementIds = [];
+    const xiulies = document.querySelectorAll(&apos;[xiuli-target]&apos;);
+    this.current = -1;
+    this.main = document.getElementById(mainContainer);
+    this.main.style.position = &apos;absolute&apos;;
+    this.main.style.transformStyle = &apos;preserve-3d&apos;;
+    const { &apos;transition-duration&apos;: transitionDuration } = getCSSStyles(this.main, &apos;transition&apos;, &apos;transition-duration&apos;);
+    if (transitionDuration === &apos;0s&apos;) {
+      this.main.style.transitionDuration = &apos;2s&apos;;
+      this.main.style.WebkitTransitionDuration = &apos;2s&apos;;
+    }
+    this.root = this.main.parentElement;
+    const { left, top } = this.root.getBoundingClientRect();
+    this.root.x = left;
+    this.root.y = top;
+    this.callback = null;
+    this.data = null;
+    this.main.addEventListener(
+      &apos;transitionend&apos;,
+      () =&gt; {
+        if (this.callback) {
+          this.callback(this.elementIds[this.current], this.data);
+          this.data = null;
+        }
+      },
+      false,
+    );
+    this.mainTrans = Mat4.fromElement(this.main);
+    this.elements = {};
+    Array.prototype.forEach.call(xiulies, (el) =&gt; {
+      this.add(el, false);
+    });
   }
 
-  test() {
-    this.console.log(&apos;Test&apos;);
+  add(el, move) {
+    const { transform, &apos;transform-origin&apos;: transformOrigin } = getCSSStyles(el, &apos;transform&apos;, &apos;transform-origin&apos;);
+    const re = /[-+]?[0-9]*\.?[0-9]+/g;
+    const [x = 0.0, y = 0.0, z = 0.0] = transformOrigin.match(re);
+    const secTr = Mat4.fromCSSTransform(transform);
+    const TrVec = Vec3.fromValues(x, y, z);
+    const TrMat = Mat4.fromTranslation(TrVec);
+    Mat4.multiply(TrMat, secTr, secTr);
+    Vec3.negate(TrVec, TrVec);
+    const w = document.documentElement.clientWidth
+      || document.body.clientWidth;
+    const h = document.documentElement.clientHeight
+      || document.body.clientHeight;
+    TrVec[0] -= ((w - el.offsetWidth) / 2) - this.root.x;
+    TrVec[1] -= ((h - el.offsetHeight) / 2) - this.root.y;
+    Mat4.fromTranslation(TrVec, TrMat);
+    Mat4.multiply(secTr, TrMat, secTr);
+
+    Mat4.invert(secTr, secTr);
+    Mat4.multiply(this.mainTrans, secTr, secTr);
+
+    this.elements[el.id] = Mat4.toCssTransform(secTr);
+    this.elementIds.push(el.id);
+    if (move) {
+      this.main.style.transform = this.elements[el.id];
+      this.clicked = el;
+    }
+  }
+  onTransitionend(fn) {
+    this.callback = fn;
+  }
+  goto(tId, data) {
+    const i = this.elementIds.indexOf(tId);
+    if (i !== -1) {
+      this.main.style.transform = this.elements[tId];
+      this.data = data;
+      this.current = i;
+    }
+  }
+
+  pre(data) {
+    this.current -= 1;
+    if (this.current &lt; 0) {
+      this.current = this.elementIds.length - 1;
+    }
+    const tId = this.elementIds[this.current];
+    this.goto(tId, data);
+  }
+
+  next(data) {
+    this.current += 1;
+    if (this.current &gt;= this.elementIds.length) {
+      this.current = 0;
+    }
+    const tId = this.elementIds[this.current];
+    this.goto(tId, data);
   }
 }
 </code></pre>

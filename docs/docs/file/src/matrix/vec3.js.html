@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/matrix/index.js | xiuli</title>
+  <title data-ice="title">src/matrix/vec3.js | xiuli</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -47,12 +47,54 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/matrix/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { ARRAY_TYPE, getCSSStyles } from &apos;./util&apos;;
-import * as Vec3 from &apos;./vec3&apos;;
-import * as Mat4 from &apos;./mat4&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/matrix/vec3.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint no-param-reassign: [&quot;error&quot;, { &quot;ignorePropertyModificationsFor&quot;: [&quot;out&quot;]}] */
+/* eslint prefer-destructuring: [&quot;error&quot;, {AssignmentExpression: {array: false}}] */
+import { ARRAY_TYPE } from &apos;./util&apos;;
 
-export { ARRAY_TYPE, getCSSStyles, Vec3, Mat4 };
+/**
+ * Creates a new vec3 initialized with the given values
+ *
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @returns {vec3} a new 3D vector
+ */
+export function fromValues(x, y, z) {
+  const out = new ARRAY_TYPE(3);
+  out[0] = x;
+  out[1] = y;
+  out[2] = z;
+  return out;
+}
+
+/**
+* Copy the values from one vec3 to another
+*
+* @param {vec3} a the source vector
+* @param {vec3} [out = new ARRAY_TYPE(3)] the receiving vector
+* @returns {vec3} out
+*/
+export function copy(a, out = new ARRAY_TYPE(3)) {
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  return out;
+}
+
+/**
+ * Negates the components of a vec3
+ *
+ * @param {vec3} a vector to negate
+ * @param {vec3} [out = new ARRAY_TYPE(3)] the receiving vector
+ * @returns {vec3} out
+ */
+export function negate(a, out = new ARRAY_TYPE(3)) {
+  out[0] = -a[0];
+  out[1] = -a[1];
+  out[2] = -a[2];
+  return out;
+}
 </code></pre>
 
 </div>
