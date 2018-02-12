@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 const { protractor, webdriver_update } = require('gulp-protractor');
+const runSequence = require('run-sequence');
 
 const { UglifyJsPlugin } = webpack.optimize;
 
@@ -55,4 +56,26 @@ gulp.task('test', ['server-start', 'protractor-install'], (done) => {
       browserSync.exit();
       done();
     });
+});
+
+
+gulp.task('reload', (done) => {
+  browserSync.reload();
+  done();
+});
+
+// use default task to launch Browsersync and watch JS files
+gulp.task('default', ['build'], () => {
+  // Serve files from the root of this project
+  browserSync.init({
+    port: '5656',
+    server: {
+      baseDir: './docs/',
+    },
+  });
+
+  // add browserSync.reload to the tasks array to make
+  // all browsers reload after tasks are complete.
+  gulp.watch(['index.js', 'src/**/*.js'], runSequence('build', 'reload'));
+  gulp.watch(['docs/index.html'], ['reload']);
 });

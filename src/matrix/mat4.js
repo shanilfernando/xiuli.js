@@ -230,6 +230,7 @@ export function fromCSSTransform(transform) {
   const re = /\(|\)|, |\s/g,
     values = transform.split(re),
     matrix = this.create();
+  console.log(values);
 
   if (values[0] === 'matrix') {
     matrix[0] = parseFloat(values[1]);
