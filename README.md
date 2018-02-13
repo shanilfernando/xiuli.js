@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <span>![](docs/assets/img/Xiuli.svg)</span>
+  <img src="docs/assets/img/Xiuli.svg" alt="Xiuli" width="200px" />
   <br>
 </h1>
 
