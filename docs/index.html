@@ -10,9 +10,9 @@
     <style>
         body {
             overflow: hidden;
-            -webkit-perspective: 1000px;
-            -moz-perspective: 1000px;
-            perspective: 1000px;
+            -webkit-perspective: 500px;
+            -moz-perspective: 500px;
+            perspective: 500px;
             background: #16222A;
             background: -webkit-linear-gradient(to right, #3A6073, #16222A);
             background: -moz-linear-gradient(to right, #3A6073, #16222A);
@@ -26,59 +26,50 @@
         }
 
         #xiuli {
-            /* transition-duration: 2s; */
-            /* -webkit-transition: all 2s;
-            -moz-transition: all 2s;
-            transition: all 2s; */
+            transition-timing-function: linear;
         }
 
         #section1 {
-            width: 90vw;
-            min-width: 30px;
-            height: 90vh;
+            width: 50vw;
+            height: 50vh;
             position: absolute;
             background: red;
         }
 
         #section2 {
-            width: 90vw;
-            height: 90vh;
+            width: 50vw;
+            height: 50vh;
             position: absolute;
             background: yellow;
-            -webkit-transform: translate3d(2000px, 5px, -100px);
-            -moz-transform: translate3d(2000px, 5px, -100px);
-            transform: translate3d(2000px, 5px, -100px);
         }
 
         #section3 {
-            width: 90vw;
-            height: 90vh;
+            width: 50vw;
+            height: 50vh;
             position: absolute;
             background: blue;
-            -webkit-transform: translate3d(-1300px, 0, 0) rotate3d(1, 0, 0, 90deg);
-            -moz-transform: translate3d(-1300px, 0, 0) rotate3d(1, 0, 0, 90deg);
-            transform: translate3d(-1300px, 0, 0) rotate3d(1, 0, 0, 90deg);
         }
 
         #section4 {
-            width: 90vw;
-            height: 90vh;
+            width: 50vw;
+            height: 50vh;
             position: absolute;
             background: black;
             color: white;
-            -webkit-transform: translate3d(-1300px, -1300px, 0) rotate3d(1, 0, 1, 90deg);
-            -moz-transform: translate3d(-1300px, -1300px, 0) rotate3d(1, 0, 1, 90deg);
-            transform: translate3d(-1300px, -1300px, 0) rotate3d(1, 0, 1, 90deg);
         }
 
         #section5 {
-            width: 90vw;
-            height: 90vh;
+            width: 50vw;
+            height: 50vh;
             position: absolute;
             background: green;
-            -webkit-transform: translate3d(-1300px, 0, -1300px) rotate3d(1, 0, 1, 90deg);
-            -moz-transform: translate3d(-1300px, 0, -1300px) rotate3d(1, 0, 1, 90deg);
-            transform: translate3d(-1300px, 0, -1300px) rotate3d(1, 0, 1, 90deg);
+        }
+
+        #section6 {
+            width: 50vw;
+            height: 50vh;
+            position: absolute;
+            background: green;
         }
     </style>
 </head>
@@ -90,6 +81,7 @@
         <button type="button" id="button3" onclick="xiuli.goto('section3',this)">section3</button>
         <button type="button" id="button4" onclick="xiuli.goto('section4',this)">section4</button>
         <button type="button" id="button5" onclick="xiuli.goto('section5',this)">section5</button>
+        <button type="button" id="button6" onclick="xiuli.goto('section6',this)">section5</button>
         <button type="button" id="pre" onclick="xiuli.pre()">Previous</button>
         <button type="button" id="next" onclick="xiuli.next()">Next</button>
     </div>
@@ -109,10 +101,14 @@
         <div id="section5" xiuli-target>
             <h1>Section 5</h1>
         </div>
+        <div id="section6" xiuli-target>
+            <h1>Section 6</h1>
+        </div>
     </div>
     <script type="text/javascript" src="assets/js/xiuli.js"></script>
     <script>
         var xiuli = new Xiuli();
+        
     </script>
     <!-- <script type="text/javascript" src="assets/js/xiuli.min.js"></script> -->
 </body>

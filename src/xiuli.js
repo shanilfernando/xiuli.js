@@ -1,4 +1,5 @@
 /* global document */
+/* eslint no-param-reassign: ["error", {"ignorePropertyModificationsFor": ["out"]}] */
 
 import { Mat4, Vec3, getCSSStyles } from './matrix';
 
@@ -33,9 +34,33 @@ export default class Xiuli {
     );
     this.mainTrans = Mat4.fromElement(this.main);
     this.elements = {};
+    Array.prototype.forEach.call(xiulies, (el, i, els) => {
+      /* let secTr = Mat4.create(); */
+      const { transform } = getCSSStyles(el, 'transform', 'transform-origin');
+      let secTr = Mat4.fromCSSTransform(transform);
+      secTr = Xiuli.spiralRotate(secTr, i, els);
+      el.style.transform = Mat4.toCssTransform(secTr);
+    });
     Array.prototype.forEach.call(xiulies, (el) => {
       this.add(el, false);
     });
+  }
+
+  static spiral(secTr, i, els) {
+    const thita = (6.28319 * (i)) / els.length;
+    secTr[12] = 500 * Math.sin(thita);
+    secTr[13] = 500;
+    secTr[14] = 200 * (Math.cos(thita) - 1);
+    return secTr;
+  }
+
+  static spiralRotate(secTr, i, els) {
+    const thita = (6.28319 * (i)) / els.length;
+    Mat4.rotate(secTr, thita, Vec3.fromValues(0, 1, 0), secTr);
+    secTr[12] = 600 * Math.sin(thita);
+    secTr[13] = 200 * i;
+    secTr[14] = 600 * (Math.cos(thita) - 1);
+    return secTr;
   }
 
   add(el, move) {
