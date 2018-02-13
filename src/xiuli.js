@@ -54,12 +54,12 @@ export default class Xiuli {
     return secTr;
   }
 
-  static spiralRotate(secTr, i, els) {
-    const thita = (6.28319 * (i)) / els.length;
+  static spiralRotate(secTr, i) {
+    const thita = (6.28319 * (i)) / 6;
     Mat4.rotate(secTr, thita, Vec3.fromValues(0, 1, 0), secTr);
-    secTr[12] = 600 * Math.sin(thita);
-    secTr[13] = 200 * i;
-    secTr[14] = 600 * (Math.cos(thita) - 1);
+    secTr[12] = 300 * Math.sin(thita);
+    secTr[13] = 75 * i;
+    secTr[14] = 300 * (Math.cos(thita) - 1);
     return secTr;
   }
 

@@ -9,10 +9,9 @@
 
     <style>
         body {
-            overflow: hidden;
-            -webkit-perspective: 500px;
-            -moz-perspective: 500px;
-            perspective: 500px;
+            -webkit-perspective: 1000px;
+            -moz-perspective: 1000px;
+            perspective: 1000px;
             background: #16222A;
             background: -webkit-linear-gradient(to right, #3A6073, #16222A);
             background: -moz-linear-gradient(to right, #3A6073, #16222A);
@@ -30,46 +29,72 @@
         }
 
         #section1 {
-            width: 50vw;
-            height: 50vh;
+            width: 25vw;
+            height: 25vh;
             position: absolute;
-            background: red;
+            background: rgba(0,0,0,0.5)
         }
 
         #section2 {
-            width: 50vw;
-            height: 50vh;
+            width: 25vw;
+            height: 25vh;
             position: absolute;
-            background: yellow;
+            background: rgba(0,0,0,0.5)
         }
 
         #section3 {
-            width: 50vw;
-            height: 50vh;
+            width: 25vw;
+            height: 25vh;
             position: absolute;
-            background: blue;
+            background: rgba(0,0,0,0.5)
         }
 
         #section4 {
-            width: 50vw;
-            height: 50vh;
+            width: 25vw;
+            height: 25vh;
             position: absolute;
-            background: black;
+            background: rgba(0,0,0,0.5);
             color: white;
         }
 
         #section5 {
-            width: 50vw;
-            height: 50vh;
+            width: 25vw;
+            height: 25vh;
             position: absolute;
-            background: green;
+            background: rgba(0,0,0,0.5)
         }
 
         #section6 {
-            width: 50vw;
-            height: 50vh;
+            width: 25vw;
+            height: 25vh;
             position: absolute;
-            background: green;
+            background: rgba(0,0,0,0.5)
+        }
+
+        #section7 {
+            width: 25vw;
+            height: 25vh;
+            position: absolute;
+            background: rgba(0,0,0,0.5)
+        }
+
+        #section8 {
+            width: 25vw;
+            height: 25vh;
+            position: absolute;
+            background: rgba(0,0,0,0.5)
+        }
+        #section9 {
+            width: 25vw;
+            height: 25vh;
+            position: absolute;
+            background: rgba(0,0,0,0.5)
+        }
+        #section10 {
+            width: 25vw;
+            height: 25vh;
+            position: absolute;
+            background: rgba(0,0,0,0.5)
         }
     </style>
 </head>
@@ -82,6 +107,10 @@
         <button type="button" id="button4" onclick="xiuli.goto('section4',this)">section4</button>
         <button type="button" id="button5" onclick="xiuli.goto('section5',this)">section5</button>
         <button type="button" id="button6" onclick="xiuli.goto('section6',this)">section5</button>
+        <button type="button" id="button7" onclick="xiuli.goto('section7',this)">section5</button>
+        <button type="button" id="button8" onclick="xiuli.goto('section8',this)">section5</button>
+        <button type="button" id="button9" onclick="xiuli.goto('section9',this)">section5</button>
+        <button type="button" id="button10" onclick="xiuli.goto('section10',this)">section5</button>
         <button type="button" id="pre" onclick="xiuli.pre()">Previous</button>
         <button type="button" id="next" onclick="xiuli.next()">Next</button>
     </div>
@@ -102,6 +131,18 @@
             <h1>Section 5</h1>
         </div>
         <div id="section6" xiuli-target>
+            <h1>Section 6</h1>
+        </div>
+        <div id="section7" xiuli-target>
+            <h1>Section 6</h1>
+        </div>
+        <div id="section8" xiuli-target>
+            <h1>Section 6</h1>
+        </div>
+        <div id="section9" xiuli-target>
+            <h1>Section 6</h1>
+        </div>
+        <div id="section10" xiuli-target>
             <h1>Section 6</h1>
         </div>
     </div>

@@ -1,4 +1,4 @@
-# Xiuli
+<span style="display:block;text-align:center">![](docs/assets/img/Xiuli.svg)</span>
 > Short blurb about what your product does.
 
 [![NPM Version][npm-image]][npm-url]
@@ -7,7 +7,7 @@
 
 One to two paragraph statement about your product and what it does.
 
-![](header.png)
+
 
 ## Installation
 
