@@ -1,4 +1,10 @@
-<span style="display:block;text-align:center">![](docs/assets/img/Xiuli.svg)</span>
+
+<h1 align="center">
+  <br>
+  <span>![](docs/assets/img/Xiuli.svg)</span>
+  <br>
+</h1>
+
 > Short blurb about what your product does.
 
 [![NPM Version][npm-image]][npm-url]
