@@ -1,14 +1,12 @@
 const gulp = require('gulp');
 const webpackStream = require('webpack-stream');
 const config = require('./webpack.config.js');
-const webpack = require('webpack');
+const minConfig = require('./webpack.pro.config.js');
 const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 const { protractor, webdriver_update } = require('gulp-protractor');
 const runSequence = require('run-sequence');
 const plumber = require('gulp-plumber');
-
-const { UglifyJsPlugin } = webpack.optimize;
 
 gulp.task('beautify_build', () => gulp.src('index.js')
   .pipe(plumber())
@@ -17,11 +15,6 @@ gulp.task('beautify_build', () => gulp.src('index.js')
   .pipe(gulp.dest('docs/assets/js')));
 
 gulp.task('uglify_build', () => {
-  const minConfig = config;
-  minConfig.plugins.push(new UglifyJsPlugin({
-    minimize: true,
-  }));
-  minConfig.output.filename = 'xiuli.min.js';
   return gulp.src('index.js')
     .pipe(plumber())
     .pipe(webpackStream(minConfig))
@@ -79,6 +72,6 @@ gulp.task('default', ['build'], () => {
 
   // add browserSync.reload to the tasks array to make
   // all browsers reload after tasks are complete.
-  gulp.watch(['index.js', 'src/**/*.js'], () => { runSequence('build', 'reload'); });
+  gulp.watch(['index.js', 'src/**/*.js'], () => runSequence('build', 'reload'));
   gulp.watch(['docs/index.html'], ['reload']);
 });

@@ -156,11 +156,13 @@ var Xiuli = function () {
     var _this = this;
 
     var mainContainer = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'xiuli';
+    var TFun = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
 
     _classCallCheck(this, Xiuli);
 
+    this.TFun = TFun;
     this.elementIds = [];
-    var xiulies = document.querySelectorAll('[xiuli-target]');
+    this.xiulies = document.querySelectorAll('[xiuli-target]');
     this.current = -1;
     this.main = document.getElementById(mainContainer);
     this.main.style.position = 'absolute';
@@ -191,26 +193,40 @@ var Xiuli = function () {
     }, false);
     this.mainTrans = _matrix.Mat4.fromElement(this.main);
     this.elements = {};
-    Array.prototype.forEach.call(xiulies, function (el, i, els) {
-      /* let secTr = Mat4.create(); */
-      var _getCSSStyles2 = (0, _matrix.getCSSStyles)(el, 'transform', 'transform-origin'),
-          transform = _getCSSStyles2.transform;
-
-      var secTr = _matrix.Mat4.fromCSSTransform(transform);
-      secTr = Xiuli.spiralRotate(secTr, i, els);
-      el.style.transform = _matrix.Mat4.toCssTransform(secTr);
-    });
-    Array.prototype.forEach.call(xiulies, function (el) {
-      _this.add(el, false);
-    });
+    this.init(TFun);
   }
 
   _createClass(Xiuli, [{
+    key: 'init',
+    value: function init() {
+      var _this2 = this;
+
+      var TFun = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+
+      this.TFun = TFun;
+      this.elementIds = [];
+      this.current = -1;
+      if (this.TFun instanceof Function) {
+        Array.prototype.forEach.call(this.xiulies, function (el, i, els) {
+          var secTr = _matrix.Mat4.create();
+          secTr = _this2.TFun(secTr, i, els);
+          el.style.transform = _matrix.Mat4.toCssTransform(secTr);
+        });
+      }
+      Array.prototype.forEach.call(this.xiulies, function (el, i) {
+        var move = false;
+        if (i === 0) {
+          move = true;
+        }
+        _this2.add(el, move);
+      });
+    }
+  }, {
     key: 'add',
     value: function add(el, move) {
-      var _getCSSStyles3 = (0, _matrix.getCSSStyles)(el, 'transform', 'transform-origin'),
-          transform = _getCSSStyles3.transform,
-          transformOrigin = _getCSSStyles3['transform-origin'];
+      var _getCSSStyles2 = (0, _matrix.getCSSStyles)(el, 'transform', 'transform-origin'),
+          transform = _getCSSStyles2.transform,
+          transformOrigin = _getCSSStyles2['transform-origin'];
 
       var re = /[-+]?[0-9]*\.?[0-9]+/g;
 
@@ -281,22 +297,50 @@ var Xiuli = function () {
       this.goto(tId, data);
     }
   }], [{
-    key: 'spiral',
-    value: function spiral(secTr, i, els) {
+    key: 'spiralSteps',
+    value: function spiralSteps(secTr, i, els) {
       var thita = 6.28319 * i / els.length;
+      _matrix.Mat4.rotate(secTr, thita - 1.5708, _matrix.Vec3.fromValues(0, 1, 0), secTr);
       secTr[12] = 500 * Math.sin(thita);
-      secTr[13] = 500;
-      secTr[14] = 200 * (Math.cos(thita) - 1);
+      secTr[13] = -400 * i;
+      secTr[14] = 500 * (Math.cos(thita) - 1);
       return secTr;
     }
   }, {
-    key: 'spiralRotate',
-    value: function spiralRotate(secTr, i) {
+    key: 'spiralRotated',
+    value: function spiralRotated(secTr, i) {
       var thita = 6.28319 * i / 6;
       _matrix.Mat4.rotate(secTr, thita, _matrix.Vec3.fromValues(0, 1, 0), secTr);
-      secTr[12] = 300 * Math.sin(thita);
-      secTr[13] = 75 * i;
-      secTr[14] = 300 * (Math.cos(thita) - 1);
+      secTr[12] = 600 * Math.sin(thita);
+      secTr[13] = 200 * i;
+      secTr[14] = 600 * (Math.cos(thita) - 1);
+      return secTr;
+    }
+  }, {
+    key: 'poly',
+    value: function poly(secTr, i) {
+      var thita = 6.28319 * i / 6;
+      _matrix.Mat4.rotate(secTr, thita, _matrix.Vec3.fromValues(0, 1, 0), secTr);
+      secTr[12] = 600 * Math.sin(thita);
+      secTr[13] = 200;
+      secTr[14] = 600 * (Math.cos(thita) - 1);
+      return secTr;
+    }
+  }, {
+    key: 'circular',
+    value: function circular(secTr, i) {
+      var thita = 6.28319 * i / 6;
+      secTr[12] = 600 * Math.sin(thita);
+      secTr[13] = 200;
+      secTr[14] = 800 * (Math.cos(thita) - 1);
+      return secTr;
+    }
+  }, {
+    key: 'steps',
+    value: function steps(secTr, i) {
+      secTr[12] = 600;
+      secTr[13] = -400 * i;
+      secTr[14] = -400 * i;
       return secTr;
     }
   }]);

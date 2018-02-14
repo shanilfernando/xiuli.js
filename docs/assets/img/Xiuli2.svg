@@ -1,0 +1,21 @@
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" style="enable-background:new" xmlns="http://www.w3.org/2000/svg" height="200" width="133.63" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 133.63142 199.99999">
+<defs id="defs4">
+<filter id="a" style="color-interpolation-filters:sRGB">
+<feBlend id="feBlend4299" in2="BackgroundImage" mode="screen"/>
+</filter>
+</defs>
+<g id="layer9" transform="translate(-155.36 -414.67)">
+<g id="g4199" transform="matrix(.23389 0 0 .23389 130.67 396.06)">
+<g id="g4158" opacity="0.97" fill-rule="evenodd" transform="translate(32.303 -36.878)">
+<path id="path4201" opacity=".8" d="m200 513.36h321.78v235h-321.78z" transform="matrix(-1 0 0 -1 717.82 909.72)" filter="url(#a)" fill="#ffa9b3"/>
+<path id="path4255" opacity="1" d="m617.77 526.87 0.28104-179.02-146.42 70.821v148.67z" fill="#31ffae"/>
+<path id="path4252" opacity=".7" d="m623.21 505.51-86.59-68.322-0.15138-231.29 86.59 117.67z" fill="#ffa787"/>
+<path id="path4258" opacity="0.8" d="m458.71 606.56-200.94 0.84311 0.56207-147.82 200.66 0.28104z" fill="#ffa9b3"/>
+<path id="path4263" opacity="1" d="m99.798 633.09 146.17 20 0.23-147.51-146.62-51.32z" fill="#ffa787"/>
+<path id="path4266" opacity=".7" d="m181.37 673.91-85.875 15.88-0.882-181.75 86.467-65.59z" fill="#31ffae"/>
+<path id="path4269" opacity=".7" d="m517.82 748.36v-235h-320v235z" fill="#ffa9b3"/>
+</g>
+<text id="text4301" opacity="1" style="word-spacing:0px;letter-spacing:0px" line-height="125%" font-size="40px" y="912.44373" x="209.94981" font-family="sans-serif" xml:space="preserve" fill="#31ffae"><tspan id="tspan4303" font-size="180px" y="912.44373" x="209.94981" font-family="Pacifico" fill="#31ffae"><tspan id="tspan4342" fill="#ffa9b3">X</tspan><tspan id="tspan4156">iuli </tspan></tspan></text>
+</g>
+</g>
+</svg>

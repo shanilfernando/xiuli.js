@@ -4,9 +4,10 @@
 import { Mat4, Vec3, getCSSStyles } from './matrix';
 
 export default class Xiuli {
-  constructor(mainContainer = 'xiuli') {
+  constructor(mainContainer = 'xiuli', TFun = undefined) {
+    this.TFun = TFun;
     this.elementIds = [];
-    const xiulies = document.querySelectorAll('[xiuli-target]');
+    this.xiulies = document.querySelectorAll('[xiuli-target]');
     this.current = -1;
     this.main = document.getElementById(mainContainer);
     this.main.style.position = 'absolute';
@@ -34,32 +35,68 @@ export default class Xiuli {
     );
     this.mainTrans = Mat4.fromElement(this.main);
     this.elements = {};
-    Array.prototype.forEach.call(xiulies, (el, i, els) => {
-      /* let secTr = Mat4.create(); */
-      const { transform } = getCSSStyles(el, 'transform', 'transform-origin');
-      let secTr = Mat4.fromCSSTransform(transform);
-      secTr = Xiuli.spiralRotate(secTr, i, els);
-      el.style.transform = Mat4.toCssTransform(secTr);
-    });
-    Array.prototype.forEach.call(xiulies, (el) => {
-      this.add(el, false);
+    this.init(TFun);
+  }
+
+  init(TFun = undefined) {
+    this.TFun = TFun;
+    this.elementIds = [];
+    this.current = -1;
+    if (this.TFun instanceof Function) {
+      Array.prototype.forEach.call(this.xiulies, (el, i, els) => {
+        let secTr = Mat4.create();
+        secTr = this.TFun(secTr, i, els);
+        el.style.transform = Mat4.toCssTransform(secTr);
+      });
+    }
+    Array.prototype.forEach.call(this.xiulies, (el, i) => {
+      let move = false;
+      if (i === 0) {
+        move = true;
+      }
+      this.add(el, move);
     });
   }
 
-  static spiral(secTr, i, els) {
+  static spiralSteps(secTr, i, els) {
     const thita = (6.28319 * (i)) / els.length;
+    Mat4.rotate(secTr, thita - 1.5708, Vec3.fromValues(0, 1, 0), secTr);
     secTr[12] = 500 * Math.sin(thita);
-    secTr[13] = 500;
-    secTr[14] = 200 * (Math.cos(thita) - 1);
+    secTr[13] = -400 * i;
+    secTr[14] = 500 * (Math.cos(thita) - 1);
     return secTr;
   }
 
-  static spiralRotate(secTr, i) {
+  static spiralRotated(secTr, i) {
     const thita = (6.28319 * (i)) / 6;
     Mat4.rotate(secTr, thita, Vec3.fromValues(0, 1, 0), secTr);
-    secTr[12] = 300 * Math.sin(thita);
-    secTr[13] = 75 * i;
-    secTr[14] = 300 * (Math.cos(thita) - 1);
+    secTr[12] = 600 * Math.sin(thita);
+    secTr[13] = 200 * i;
+    secTr[14] = 600 * (Math.cos(thita) - 1);
+    return secTr;
+  }
+
+  static poly(secTr, i) {
+    const thita = (6.28319 * (i)) / 6;
+    Mat4.rotate(secTr, thita, Vec3.fromValues(0, 1, 0), secTr);
+    secTr[12] = 600 * Math.sin(thita);
+    secTr[13] = 200;
+    secTr[14] = 600 * (Math.cos(thita) - 1);
+    return secTr;
+  }
+
+  static circular(secTr, i) {
+    const thita = (6.28319 * (i)) / 6;
+    secTr[12] = 600 * Math.sin(thita);
+    secTr[13] = 200;
+    secTr[14] = 800 * (Math.cos(thita) - 1);
+    return secTr;
+  }
+
+  static steps(secTr, i) {
+    secTr[12] = 600;
+    secTr[13] = -400 * i;
+    secTr[14] = -400 * i;
     return secTr;
   }
 
