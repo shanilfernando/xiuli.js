@@ -1,9 +1,3 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.Xiuli = factory());
-}(this, (function () { 'use strict';
-
 /* global getComputedStyle */
 
 var ARRAY_TYPE = typeof Float32Array !== 'undefined' ? Float32Array : Array;
@@ -649,7 +643,4 @@ var initializers = Object.freeze({
 
 Xiuli.initializers = initializers;
 
-return Xiuli;
-
-})));
-//# sourceMappingURL=xiuli.js.map
+export default Xiuli;

@@ -11,6 +11,7 @@ const ARRAY_TYPE = typeof Float32Array !== 'undefined' ? Float32Array : Array;
 function getCSSStyles(el, ...properties) {
   const style = getComputedStyle(el, null);
   const result = {};
+  console.log(style);
   properties.forEach((value) => {
     const property =
       style.getPropertyValue(`-webkit-${value}`) ||

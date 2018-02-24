@@ -1,31 +1,30 @@
+/* eslint no-restricted-syntax: 0 */
+/* eslint no-await-in-loop: 0 */
+/* eslint camelcase: 0 */
+
 const gulp = require('gulp');
-const webpackStream = require('webpack-stream');
-const config = require('./webpack.config.js');
-const minConfig = require('./webpack.pro.config.js');
-const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
-const { protractor, webdriver_update } = require('gulp-protractor');
 const runSequence = require('run-sequence');
-const plumber = require('gulp-plumber');
+const rollup = require('rollup');
+const rollupConfigs = require('./rollup.config');
+const { protractor, webdriver_update } = require('gulp-protractor');
 
-gulp.task('beautify_build', () => gulp.src('index.js')
-  .pipe(plumber())
-  .pipe(webpackStream(config))
-  .pipe(gulp.dest('lib/'))
-  .pipe(gulp.dest('docs/assets/js')));
+gulp.task('build', async () => {
+  for (const rollupConfig of rollupConfigs) {
+    const bundle = await rollup.rollup({
+      input: rollupConfig.input,
+      plugins: rollupConfig.plugins,
+    });
 
-gulp.task('uglify_build', () => {
-  return gulp.src('index.js')
-    .pipe(plumber())
-    .pipe(webpackStream(minConfig))
-    .pipe(rename('xiuli.min.js'))
-    .pipe(gulp.dest('lib/'))
-    .pipe(gulp.dest('docs/assets/js'));
+    rollupConfig.output.forEach(async (output) => {
+      await bundle.write(output);
+    });
+  }
 });
 
-gulp.task('protractor-install', webdriver_update);
+/* Testing */
 
-gulp.task('build', ['beautify_build', 'uglify_build']);
+gulp.task('protractor-install', webdriver_update);
 
 gulp.task('server-start', ['build'], (done) => {
   browserSync.init({
@@ -54,15 +53,14 @@ gulp.task('test', ['server-start', 'protractor-install'], (done) => {
     });
 });
 
+/* Development */
 
 gulp.task('reload', (done) => {
   browserSync.reload();
   done();
 });
 
-// use default task to launch Browsersync and watch JS files
 gulp.task('default', ['build'], () => {
-  // Serve files from the root of this project
   browserSync.init({
     port: '5656',
     server: {
@@ -70,8 +68,6 @@ gulp.task('default', ['build'], () => {
     },
   });
 
-  // add browserSync.reload to the tasks array to make
-  // all browsers reload after tasks are complete.
-  gulp.watch(['index.js', 'src/**/*.js'], () => runSequence('build', 'reload'));
+  gulp.watch(['src/**/*.js'], () => runSequence('build', 'reload'));
   gulp.watch(['docs/index.html'], ['reload']);
 });

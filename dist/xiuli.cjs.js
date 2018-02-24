@@ -1,8 +1,4 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.Xiuli = factory());
-}(this, (function () { 'use strict';
+'use strict';
 
 /* global getComputedStyle */
 
@@ -649,7 +645,4 @@ var initializers = Object.freeze({
 
 Xiuli.initializers = initializers;
 
-return Xiuli;
-
-})));
-//# sourceMappingURL=xiuli.js.map
+module.exports = Xiuli;

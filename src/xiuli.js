@@ -5,10 +5,6 @@ import { Mat4, Vec3, getCSSStyles } from './matrix';
 
 export default class Xiuli {
   constructor(mainContainer = 'xiuli', TFun = undefined) {
-    this.TFun = TFun;
-    this.elementIds = [];
-    this.xiulies = document.querySelectorAll('[xiuli-target]');
-    this.current = -1;
     this.main = document.getElementById(mainContainer);
     this.main.style.position = 'absolute';
     this.main.style.transformStyle = 'preserve-3d';
@@ -18,9 +14,6 @@ export default class Xiuli {
       this.main.style.WebkitTransitionDuration = '2s';
     }
     this.root = this.main.parentElement;
-    const { left, top } = this.root.getBoundingClientRect();
-    this.root.x = left;
-    this.root.y = top;
     this.callback = null;
     this.data = null;
     this.main.addEventListener(
@@ -34,7 +27,6 @@ export default class Xiuli {
       false,
     );
     this.mainTrans = Mat4.fromElement(this.main);
-    this.elements = {};
     this.init(TFun);
   }
 
@@ -42,6 +34,8 @@ export default class Xiuli {
     this.TFun = TFun;
     this.elementIds = [];
     this.current = -1;
+    this.elements = {};
+    this.xiulies = this.main.querySelectorAll('[data-xiuli]');
     if (this.TFun instanceof Function) {
       Array.prototype.forEach.call(this.xiulies, (el, i, els) => {
         let secTr = Mat4.create();
@@ -58,48 +52,6 @@ export default class Xiuli {
     });
   }
 
-  static spiralSteps(secTr, i, els) {
-    const thita = (6.28319 * (i)) / els.length;
-    Mat4.rotate(secTr, thita - 1.5708, Vec3.fromValues(0, 1, 0), secTr);
-    secTr[12] = 500 * Math.sin(thita);
-    secTr[13] = -400 * i;
-    secTr[14] = 500 * (Math.cos(thita) - 1);
-    return secTr;
-  }
-
-  static spiralRotated(secTr, i) {
-    const thita = (6.28319 * (i)) / 6;
-    Mat4.rotate(secTr, thita, Vec3.fromValues(0, 1, 0), secTr);
-    secTr[12] = 600 * Math.sin(thita);
-    secTr[13] = 200 * i;
-    secTr[14] = 600 * (Math.cos(thita) - 1);
-    return secTr;
-  }
-
-  static poly(secTr, i) {
-    const thita = (6.28319 * (i)) / 6;
-    Mat4.rotate(secTr, thita, Vec3.fromValues(0, 1, 0), secTr);
-    secTr[12] = 600 * Math.sin(thita);
-    secTr[13] = 200;
-    secTr[14] = 600 * (Math.cos(thita) - 1);
-    return secTr;
-  }
-
-  static circular(secTr, i) {
-    const thita = (6.28319 * (i)) / 6;
-    secTr[12] = 600 * Math.sin(thita);
-    secTr[13] = 200;
-    secTr[14] = 800 * (Math.cos(thita) - 1);
-    return secTr;
-  }
-
-  static steps(secTr, i) {
-    secTr[12] = 600;
-    secTr[13] = -400 * i;
-    secTr[14] = -400 * i;
-    return secTr;
-  }
-
   add(el, move) {
     const { transform, 'transform-origin': transformOrigin } = getCSSStyles(el, 'transform', 'transform-origin');
     const re = /[-+]?[0-9]*\.?[0-9]+/g;
@@ -109,12 +61,10 @@ export default class Xiuli {
     const TrMat = Mat4.fromTranslation(TrVec);
     Mat4.multiply(TrMat, secTr, secTr);
     Vec3.negate(TrVec, TrVec);
-    const w = document.documentElement.clientWidth
-      || document.body.clientWidth;
-    const h = document.documentElement.clientHeight
-      || document.body.clientHeight;
-    TrVec[0] -= ((w - el.offsetWidth) / 2) - this.root.x;
-    TrVec[1] -= ((h - el.offsetHeight) / 2) - this.root.y;
+    const w = this.root.offsetWidth;
+    const h = this.root.offsetHeight;
+    TrVec[0] -= ((w - el.offsetWidth) / 2);
+    TrVec[1] -= ((h - el.offsetHeight) / 2);
     Mat4.fromTranslation(TrVec, TrMat);
     Mat4.multiply(secTr, TrMat, secTr);
 
@@ -124,8 +74,7 @@ export default class Xiuli {
     this.elements[el.id] = Mat4.toCssTransform(secTr);
     this.elementIds.push(el.id);
     if (move) {
-      this.main.style.transform = this.elements[el.id];
-      this.clicked = el;
+      this.goto(el.id, null);
     }
   }
   onTransitionend(fn) {

@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        body {
+        #root,
+        #root1 {
             overflow: hidden;
             -webkit-perspective: 500px;
             -moz-perspective: 500px;
             perspective: 500px;
             height: 100vh;
             background: rgba(255, 169, 179, 0.1);
+            position: relative;
+            z-index: -100;
         }
 
         .w3-top {
@@ -32,12 +35,24 @@
             transition-timing-function: linear;
         }
 
-        #section1 {
+        #section1,
+        #section2,
+        #section3,
+        #section4,
+        #section5,
+        #section6,
+        #section11,
+        #section21,
+        #section31,
+        #section41,
+        #section51,
+        #section61 {
             width: 50vw;
             min-width: 300px;
             height: 60vh;
             position: absolute;
             background: rgba(255, 255, 255, 0.6);
+            
         }
 
         #section2 {
@@ -83,7 +98,7 @@
 
 <body>
     <!-- <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 2;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a> -->
-    <div class="w3-top">
+    <div>
         <div class="w3-bar w3-row">
             <div class="w3-col s12 l6 w3-center">
                 <div class="w3-dropdown-click">
@@ -92,11 +107,11 @@
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div id="demo" class="w3-dropdown-content w3-bar-block w3-card">
-                        <button type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.spiralSteps)">spiralSteps</button>
-                        <button type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.spiralRotated)">spiralRotated</button>
-                        <button type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.poly)">poly</button>
-                        <button type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.circular)">circular</button>
-                        <button type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.steps)">steps</button>
+                        <button id="spiralSteps" type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.initializers.spiralSteps)">spiralSteps</button>
+                        <button id="spiralRotated" type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.initializers.spiralRotated)">spiralRotated</button>
+                        <button id="poly" type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.initializers.poly)">poly</button>
+                        <button id="circular" type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.initializers.circular)">circular</button>
+                        <button id="steps" type="button" class="w3-bar-item w3-button" onclick="xiuli.init(Xiuli.initializers.steps)">steps</button>
                     </div>
                 </div>
                 <div class="w3-center">
@@ -118,34 +133,112 @@
             </div>
 
         </div>
-    </div>
-    <div id="xiuli">
-        <div id="section1" xiuli-target class="w3-display-container w3-border w3-round-xxlarge">
-            <img class="w3-display-middle" height="90%" src="equilateral.png" alt="triangle with equal sides" srcset="assets/img/Xiuli.svg">
-        </div>
-        <div id="section2" xiuli-target class="w3-display-container w3-border w3-round-xxlarge">
-            <div class="w3-display-middle w3-center">
-                <p style="font-size: 5vh">An awesome
-                    <span style="font-size: 10vh">3D</span> Presentation Framework</p>
+        <div id="root">
+            <div id="xiuli">
+                <div id="section1" data-xiuli class="w3-display-container w3-border w3-round-xxlarge">
+                    <img class="w3-display-middle" height="90%" src="equilateral.png" alt="triangle with equal sides" srcset="assets/img/Xiuli.svg">
+                </div>
+                <div id="section2" data-xiuli class="w3-display-container w3-border w3-round-xxlarge">
+                    <div class="w3-display-middle w3-center">
+                        <p style="font-size: 5vh">An awesome
+                            <span style="font-size: 10vh">3D</span> Presentation Framework</p>
+                    </div>
+                </div>
+                <div id="section3" data-xiuli class="w3-padding w3-center w3-border w3-round-xxlarge">
+                    <p style="font-size: 5vh;">Bring your awesome website, Let Xiuli make it
+                        <span style="font-size: 8vh;">Super Awesome</span>
+                    </p>
+                </div>
+                <div id="section4" data-xiuli class="w3-padding w3-center w3-border w3-round-xxlarge">
+                    <p style="font-size: 5vh">You design using well known
+                        <span style="font-size: 8vh">CSS</span> stylings and let
+                        <span style="font-size: 8vh">Xiuli</span> translate it for you
+                    </p>
+                </div>
+                <div id="section5" data-xiuli class="w3-padding w3-center w3-border w3-round-xxlarge">
+                    <p style="font-size: 5vh">
+                        <span style="font-size: 8vh">Light weight</span> but
+                        <span style="font-size: 8vh">sophisticated</span> library</p>
+                    <p style="font-size: 5vh">100% CSS animations</p>
+                </div>
+                <div id="section6" data-xiuli class="w3-center">
+                    <!-- <img height="100%" class="w3-border w3-round-xxlarge" src="assets/img/xiuli.jpg" class="w3-round" alt="Xiuli">
+            <p style="font-size: 5vh">If you still wonders, Its named after my life!</p> -->
+                </div>
             </div>
         </div>
-        <div id="section3" xiuli-target class="w3-padding w3-center w3-border w3-round-xxlarge">
-            <p style="font-size: 5vh">Bring your awesome website, Let Xiuli make it
-                <span style="font-size: 8vh">Super Awesome</span>
-            </p>
+    </div>
+    <div>
+        <h1>you can use multiple in same page also</h1>
+    </div>
+    <div>
+        <div class="w3-bar w3-row">
+            <div class="w3-col s12 l6 w3-center">
+                <div class="w3-dropdown-click">
+                    <button class="w3-button" onclick="myFunction()">
+                        Transformations
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div id="demo" class="w3-dropdown-content w3-bar-block w3-card">
+                        <button id="spiralSteps1" type="button" class="w3-bar-item w3-button" onclick="xiuli1.init(Xiuli.initializers.spiralSteps)">spiralSteps</button>
+                        <button id="spiralRotated1" type="button" class="w3-bar-item w3-button" onclick="xiuli1.init(Xiuli.initializers.spiralRotated)">spiralRotated</button>
+                        <button id="poly1" type="button" class="w3-bar-item w3-button" onclick="xiuli1.init(Xiuli.initializers.poly)">poly</button>
+                        <button id="circular1" type="button" class="w3-bar-item w3-button" onclick="xiuli1.init(Xiuli.initializers.circular)">circular</button>
+                        <button id="steps1" type="button" class="w3-bar-item w3-button" onclick="xiuli1.init(Xiuli.initializers.steps)">steps</button>
+                    </div>
+                </div>
+                <div class="w3-center">
+                    <button type="button" class="w3-button" id="pre1" onclick="xiuli1.pre()">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="w3-button" id="next1" onclick="xiuli1.next()">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="w3-col s12 l6 w3-center">
+                <button type="button" class="w3-button" id="button11" onclick="xiuli1.goto('section11',this)">1</button>
+                <button type="button" class="w3-button" id="button21" onclick="xiuli1.goto('section21',this)">2</button>
+                <button type="button" class="w3-button" id="button31" onclick="xiuli1.goto('section31',this)">3</button>
+                <button type="button" class="w3-button" id="button41" onclick="xiuli1.goto('section41',this)">4</button>
+                <button type="button" class="w3-button" id="button51" onclick="xiuli1.goto('section51',this)">5</button>
+                <button type="button" class="w3-button" id="button61" onclick="xiuli1.goto('section61',this)">6</button>
+            </div>
+
         </div>
-        <div id="section4" xiuli-target class="w3-padding w3-center w3-border w3-round-xxlarge">
-            <p style="font-size: 5vh">You design using well known
-                <span style="font-size: 8vh">CSS</span> stylings and let <span style="font-size: 8vh">Xiuli</span> translate it for you
-            </p>
-        </div>
-        <div id="section5" xiuli-target class="w3-padding w3-center w3-border w3-round-xxlarge">
-            <p style="font-size: 5vh"><span style="font-size: 8vh">Light weight</span> but <span style="font-size: 8vh">sophisticated</span> library</h1>
+    </div>
+    <div id="root1">
+        <div id="xiuli1">
+            <div id="section11" data-xiuli class="w3-display-container w3-border w3-round-xxlarge">
+                <img class="w3-display-middle" height="90%" src="equilateral.png" alt="triangle with equal sides" srcset="assets/img/Xiuli.svg">
+            </div>
+            <div id="section21" data-xiuli class="w3-display-container w3-border w3-round-xxlarge">
+                <div class="w3-display-middle w3-center">
+                    <p style="font-size: 5vh">An awesome
+                        <span style="font-size: 10vh">3D</span> Presentation Framework</p>
+                </div>
+            </div>
+            <div id="section31" data-xiuli class="w3-padding w3-center w3-border w3-round-xxlarge">
+                <p style="font-size: 5vh;">Bring your awesome website, Let Xiuli make it
+                    <span style="font-size: 8vh;">Super Awesome</span>
+                </p>
+            </div>
+            <div id="section41" data-xiuli class="w3-padding w3-center w3-border w3-round-xxlarge">
+                <p style="font-size: 5vh">You design using well known
+                    <span style="font-size: 8vh">CSS</span> stylings and let
+                    <span style="font-size: 8vh">Xiuli</span> translate it for you
+                </p>
+            </div>
+            <div id="section51" data-xiuli class="w3-padding w3-center w3-border w3-round-xxlarge">
+                <p style="font-size: 5vh">
+                    <span style="font-size: 8vh">Light weight</span> but
+                    <span style="font-size: 8vh">sophisticated</span> library</p>
                 <p style="font-size: 5vh">100% CSS animations</p>
-        </div>
-        <div id="section6" xiuli-target class="w3-center">
-            <img height="100%" class="w3-border w3-round-xxlarge" src="assets/img/xiuli.jpg" class="w3-round" alt="Xiuli">
-            <p style="font-size: 5vh">If you still wonders, Its named after my life!</p>
+            </div>
+            <div id="section61" data-xiuli class="w3-center">
+                <!-- <img height="100%" class="w3-border w3-round-xxlarge" src="assets/img/xiuli.jpg" class="w3-round" alt="Xiuli">
+            <p style="font-size: 5vh">If you still wonders, Its named after my life!</p> -->
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="assets/js/xiuli.js"></script>
@@ -158,7 +251,9 @@
                 x.className = x.className.replace(" w3-show", "");
             }
         }
-        var xiuli = new Xiuli('xiuli', Xiuli.spiralRotated);
+        var xiuli = new Xiuli('xiuli', Xiuli.initializers.steps);
+        var xiuli1 = new Xiuli('xiuli1', Xiuli.initializers.steps);
+
 
     </script>
     <!-- <script type="text/javascript" src="assets/js/xiuli.min.js"></script> -->

@@ -14,24 +14,7 @@ import { ARRAY_TYPE, getCSSStyles } from './util';
  * @return {Mat4} a new 4 x 4 identity Matrix.
  */
 export function create() {
-  const out = new ARRAY_TYPE(16);
-  out[0] = 1;
-  out[1] = 0;
-  out[2] = 0;
-  out[3] = 0;
-  out[4] = 0;
-  out[5] = 1;
-  out[6] = 0;
-  out[7] = 0;
-  out[8] = 0;
-  out[9] = 0;
-  out[10] = 1;
-  out[11] = 0;
-  out[12] = 0;
-  out[13] = 0;
-  out[14] = 0;
-  out[15] = 1;
-  return out;
+  return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
 }
 
 /**
@@ -68,23 +51,10 @@ export function copy(a, out = new ARRAY_TYPE(16)) {
  * @param {mat4} [out = new ARRAY_TYPE(16)] out mat4 receiving operation result
  * @returns {mat4} out
  */
-export function fromTranslation(v, out = new ARRAY_TYPE(16)) {
-  out[0] = 1;
-  out[1] = 0;
-  out[2] = 0;
-  out[3] = 0;
-  out[4] = 0;
-  out[5] = 1;
-  out[6] = 0;
-  out[7] = 0;
-  out[8] = 0;
-  out[9] = 0;
-  out[10] = 1;
-  out[11] = 0;
+export function fromTranslation(v, out = create()) {
   out[12] = v[0];
   out[13] = v[1];
   out[14] = v[2];
-  out[15] = 1;
   return out;
 }
 
@@ -293,8 +263,7 @@ export function rotate(a, rad, axis, out = new ARRAY_TYPE(16)) {
 export function fromCSSTransform(transform) {
   const re = /\(|\)|, |\s/g,
     values = transform.split(re),
-    matrix = this.create();
-  console.log(values);
+    matrix = create();
 
   if (values[0] === 'matrix') {
     matrix[0] = parseFloat(values[1]);
@@ -304,7 +273,7 @@ export function fromCSSTransform(transform) {
     matrix[12] = parseFloat(values[5]);
     matrix[13] = parseFloat(values[6]);
   } else if (values[0] === 'matrix3d') {
-    this.copy(values.slice(1, 17).map(v => parseFloat(v)), matrix);
+    copy(values.slice(1, 17).map(v => parseFloat(v)), matrix);
   }
   return matrix;
 }
@@ -317,7 +286,7 @@ export function fromCSSTransform(transform) {
  */
 export function fromElement(el) {
   const { transform } = getCSSStyles(el, 'transform'),
-    matrix = this.fromCSSTransform(transform);
+    matrix = fromCSSTransform(transform);
   return matrix;
 }
 
