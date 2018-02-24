@@ -8,7 +8,8 @@ export default class Xiuli {
     this.main = document.getElementById(mainContainer);
     this.main.style.position = 'absolute';
     this.main.style.transformStyle = 'preserve-3d';
-    const { 'transition-duration': transitionDuration } = getCSSStyles(this.main, 'transition', 'transition-duration');
+    const { 'transition-duration': transitionDuration } =
+     getCSSStyles(this.main, 'transition', 'transition-duration');
     if (transitionDuration === '0s') {
       this.main.style.transitionDuration = '2s';
       this.main.style.WebkitTransitionDuration = '2s';

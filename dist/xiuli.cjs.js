@@ -13,7 +13,6 @@ var ARRAY_TYPE = typeof Float32Array !== 'undefined' ? Float32Array : Array;
 function getCSSStyles(el) {
   var style = getComputedStyle(el, null);
   var result = {};
-  console.log(style);
 
   for (var _len = arguments.length, properties = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     properties[_key - 1] = arguments[_key];
