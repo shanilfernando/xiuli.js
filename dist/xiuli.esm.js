@@ -632,12 +632,12 @@ function poly(secTr, i) {
   return secTr;
 }
 
-var initializers = Object.freeze({
-	steps: steps,
-	circular: circular,
-	spiralSteps: spiralSteps,
-	spiralRotated: spiralRotated,
-	poly: poly
+var initializers = /*#__PURE__*/Object.freeze({
+  steps: steps,
+  circular: circular,
+  spiralSteps: spiralSteps,
+  spiralRotated: spiralRotated,
+  poly: poly
 });
 
 Xiuli.initializers = initializers;

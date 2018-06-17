@@ -1,7 +1,7 @@
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const babel = require('rollup-plugin-babel');
-const uglify = require('rollup-plugin-uglify');
+const { uglify } = require('rollup-plugin-uglify');
 const eslint = require('rollup-plugin-eslint');
 const filesize = require('rollup-plugin-filesize');
 const pkg = require('./package.json');
