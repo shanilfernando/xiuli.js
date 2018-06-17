@@ -6,17 +6,20 @@ exports.config = {
   directConnect: true,
   specs: ['test/xiuli.spec.js'],
   maxSessions: 1,
-  multiCapabilities: [{
-    browserName: 'firefox',
-    'moz:firefoxOptions': {
-      args: ['--headless'],
-    },
-  }, {
-    browserName: 'chrome',
-    chromeOptions: {
-      args: ['--headless'],
-    },
-  }],
+  multiCapabilities: [
+/*     {
+      browserName: 'firefox',
+      'moz:firefoxOptions': {
+        args: ['--headless'],
+      },
+    }
+    , */
+    {
+      browserName: 'chrome',
+      chromeOptions: {
+        args: ['--headless'],
+      },
+    }],
   jasmineNodeOpts: { print() { }, defaultTimeoutInterval: 30000 },
   SELENIUM_PROMISE_MANAGER: false,
   onPrepare() {
