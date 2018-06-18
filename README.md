@@ -26,6 +26,8 @@
 
 ## Features
 
+[![Join the chat at https://gitter.im/xiuli-js/Lobby](https://badges.gitter.im/xiuli-js/Lobby.svg)](https://gitter.im/xiuli-js/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 * Lightweight.
   * ~ 7kb 
   * ~ 2kb gziped
