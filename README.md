@@ -4,23 +4,16 @@
   <a href=""><img src="docs/assets/img/Xiuli.svg" alt="Markdownify" width="200"></a>
 </h1>
 
-<h4 align="center">A 3D presentation framework for browser using pure CSS3 animations and transformations inspired by <a href="https://github.com/impress/impress.js/">
+<h4 align="center">A 3D presentation framework for web using pure CSS3 animations and transformations inspired by <a href="https://github.com/impress/impress.js/">
     impress.js
   </a>.</h4>
 
-<!-- <p align="center">
-  <a href="https://badge.fury.io/js/electron-markdownify">
-    <img src="https://badge.fury.io/js/electron-markdownify.svg"
-         alt="Gitter">
+<p align="center">
+  <a href="https://travis-ci.org/shanilfernando/xiuli.js">
+    <img src="https://travis-ci.org/shanilfernando/xiuli.js.svg?branch=master"
+         alt="travis-ci">
   </a>
-  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a>
-  <a href="https://saythanks.io/to/amitmerchant1990">
-      <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
-  </a>
-  <a href="https://www.paypal.me/AmitMerchant">
-    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
-  </a>
-</p> -->
+</p>
 
 <p align="center">
   <a href="#features">Features</a> •
@@ -30,8 +23,6 @@
   <a href="#credits">Credits</a> •
   <a href="#license">License</a>
 </p>
-
-<!-- ![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/img/markdownify.gif) -->
 
 ## Features
 
@@ -65,7 +56,7 @@ $ npm install xiuli --save
 ### CDN
 
 ### Download
-You can [download](https://github.com/amitmerchant1990/electron-markdownify/releases/tag/v1.2.0) latest released version and add it your website.
+You can download latest released version and add it your website.
 
 ## Usage
 
@@ -78,8 +69,6 @@ You can [download](https://github.com/amitmerchant1990/electron-markdownify/rele
 
 ## Support
 
-<a href="https://www.buymeacoffee.com/5Zn8Xh3l9" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
-
 ## License
 
 MIT
@@ -88,5 +77,5 @@ MIT
 
 <p align="center">
   <a href="https://shanilfernando.github.io/">shanilfernando.github.io</a> •
-  <a href="#installation">Github</a>
+  <a href="https://github.com/shanilfernando">Github</a>
 </p>
