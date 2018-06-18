@@ -13,6 +13,10 @@
     <img src="https://travis-ci.org/shanilfernando/xiuli.js.svg?branch=master"
          alt="travis-ci">
   </a>
+  <a href="https://gitter.im/xiuli-js/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge" title="Join the chat at https://gitter.im/xiuli-js/Lobby">
+    <img src="https://badges.gitter.im/xiuli-js/Lobby.svg"
+         alt="Gitter">
+  </a>
 </p>
 
 <p align="center">
@@ -25,8 +29,6 @@
 </p>
 
 ## Features
-
-[![Join the chat at https://gitter.im/xiuli-js/Lobby](https://badges.gitter.im/xiuli-js/Lobby.svg)](https://gitter.im/xiuli-js/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 * Lightweight.
   * ~ 7kb 
